@@ -1,0 +1,22 @@
+{
+  "name": "quizmastermind",
+  "version": "1.0.0",
+  "description": "Application de quizz",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ti-metiss/quizMastermind.git"
+  },
+  "author": "Yoan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ti-metiss/quizMastermind/issues"
+  },
+  "homepage": "https://github.com/ti-metiss/quizMastermind#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
