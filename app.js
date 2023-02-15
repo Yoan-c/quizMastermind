@@ -1,4 +1,5 @@
 const express = require("express");
+const ErrorHandler = require("./controllers/errorController");
 const userRoute = require("./routes/userRoute");
 const app = express();
 
@@ -10,5 +11,6 @@ app.get("/", (req, res) => {
     message: "Ok",
   });
 });
+app.use(ErrorHandler);
 
 module.exports = app;
