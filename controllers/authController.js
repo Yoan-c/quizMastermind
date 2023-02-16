@@ -86,8 +86,10 @@ exports.proctect = catchAsync(async(req, res, next) => {
   if (req.cookies && req.cookies.jwt) {
       const id = decodedToken(req.cookies.jwt)
       const user = await User.findById(id)
-      if (user)
-       return  next();
+      if (user){
+        req.user = user
+        return  next();
+      }
   }
   return next(new AppError("Vous n'êtes pas connecté", 401))
 

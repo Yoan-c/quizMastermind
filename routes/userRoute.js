@@ -1,6 +1,7 @@
 const express = require("express");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
+const quizController = require("../controllers/quizController");
 const router = express.Router();
 
 router.route("/").get(userController.getUser).post(authController.createUser);

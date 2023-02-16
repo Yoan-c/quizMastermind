@@ -39,6 +39,21 @@ const userSchema = new mongoose.Schema({
       message: `Les mot de passe sont différents`,
     },
   },
+  quiz : [
+    {
+      category : String,
+      info : [{
+        question : String,
+        answer : String,
+        userAnswer : String,
+        sucess : Boolean,
+        isAnswer : {
+          type : Boolean,
+          default : false
+        }
+      }]
+    }
+  ]
 });
 
 userSchema.pre("save", async function (next) {

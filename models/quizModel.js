@@ -10,9 +10,11 @@ const quizSchema = new mongoose.Schema({
     enum: ["Easy", "Medium", "Hard"],
     required: [true, "Un niveau de difficulté est requis (Easy, Medium, Hard)"],
   },
+  category : String,
   correct_answer: {
     type: String,
     required: [true, "Entrer la réponse à cette question"],
+    select : false
   },
   choices: {
     type: [String],
@@ -25,6 +27,8 @@ const quizSchema = new mongoose.Schema({
     },
   },
 });
+
+
 
 const quiz = mongoose.model("QuizMarvel", quizSchema);
 
