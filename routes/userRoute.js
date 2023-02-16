@@ -6,7 +6,8 @@ const router = express.Router();
 router.route("/").get(userController.getUser).post(authController.createUser);
 
 router.route("/login").post(authController.login);
-
+router.route("/logout").get(authController.logout);
+router.use(authController.proctect)
 router
   .route("/:id")
   .get(userController.getOneUser)

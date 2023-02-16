@@ -10,6 +10,11 @@ const createToken = (id) => {
   return token;
 };
 
+const decodedToken = (token) => {
+  const {id} = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
+  return id
+}
+
 const sendToken = (res, id) => {
   const token = createToken(id);
   res.cookie("jwt", token, {
@@ -65,3 +70,25 @@ exports.login = catchAsync(async (req, res, next) => {
     );
   sendToken(res, idUser);
 });
+
+exports.logout = catchAsync(async (req, res, next) => {
+  if (req.cookies && req.cookies.jwt) {
+    res.clearCookie('jwt', { expires: new Date(Date.now() - 5000) })
+  }
+
+  res.status(200).json({
+    status : "success",
+    message : "Disconected"
+  })
+})
+
+exports.proctect = catchAsync(async(req, res, next) => {
+  if (req.cookies && req.cookies.jwt) {
+      const id = decodedToken(req.cookies.jwt)
+      const user = await User.findById(id)
+      if (user)
+       return  next();
+  }
+  return next(new AppError("Vous n'êtes pas connecté", 401))
+
+})
