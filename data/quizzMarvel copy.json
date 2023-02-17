@@ -1,0 +1,116 @@
+[
+  {
+    "question": "Quel personnage Marvel est surnommé \"Le Dieu du Tonnerre\"",
+    "difficulty": "Easy",
+    "category": "Marvel",
+    "correct_answer": "Thor",
+    "choices": ["Thor", "Iron Man", "Hulk", "Captain America"]
+  },
+  {
+    "question":
+      "Qui est le personnage principal de la série de bandes dessinées Spider-Man ?",
+    "difficulty": "Easy",
+    "category": "Marvel",
+    "correct_answer": "Peter Parker",
+    "choices": ["Steve Rogers", "Bruce Banner", "Tony Stark", "Peter Parker"]
+  },
+  {
+    "question": "Qui est le fondateur des Avengers dans l'univers Marvel ?",
+    "difficulty": "Easy",
+    "category": "Marvel",
+    "correct_answer": "Hank Pym",
+    "choices": ["Nick Fury", "Tony Stark", "Thor", "Hank Pym"]
+  },
+  {
+    "question":
+      "Quel personnage de Marvel est également connu sous le nom de Logan ?",
+    "difficulty": "Easy",
+    "category": "Marvel",
+    "correct_answer": "Wolverine",
+    "choices": ["Spider-Man", "Iron Man", "Wolverine", "Deadpool"]
+  },
+  {
+    "question":
+      "Quel est le nom du super-héros Marvel qui est capable de s'étirer ?",
+    "difficulty": "Easy",
+    "category": "Marvel",
+    "correct_answer": "Mister Fantastic",
+    "choices": ["Mister Fantastic", "Spider-Man", "Hulk", "Black Widow"]
+  },
+  {
+    "question": "Quel personnage Marvel est surnommé \"L'Homme-Araignée\" ?",
+    "difficulty": "Easy",
+    "category": "Marvel",
+    "correct_answer": "Peter Parker",
+    "choices": ["Tony Stark", "Bruce Banner", "Peter Parker", "Steve Rogers"]
+  },
+  {
+    "question":
+      "Qui est le frère jumeau de la sorcière écarlate dans l'univers Marvel ?",
+    "difficulty": "Easy",
+    "category": "Marvel",
+    "correct_answer": "Pietro Maximoff",
+    "choices": ["Pietro Maximoff", "Clint Barton", "Bruce Banner", "Vision"]
+  },
+  {
+    "question":
+      "Qui est le personnage de Marvel qui est un cyborg avec un bras canonique ?",
+    "difficulty": "Easy",
+    "category": "Marvel",
+    "correct_answer": "Cable",
+    "choices": ["Rocket Raccoon", "Groot", "Cable", "Black Bolt"]
+  },
+  {
+    "question":
+      "Dans le film \"Les Gardiens de la Galaxie\", quel personnage a pour animal de compagnie un raton laveur nommé Rocket ?",
+    "difficulty": "Easy",
+    "category": "Marvel",
+    "correct_answer": "Star-Lord",
+    "choices": ["Star-Lord", "Drax", "Groot", "Gamora"]
+  },
+  {
+    "question":
+      "Qui est l'ennemi juré de Spider-Man, souvent représenté avec un costume vert et violet ?",
+    "difficulty": "Easy",
+    "category": "Marvel",
+    "correct_answer": "Green Goblin",
+    "choices": ["Venom", "Green Goblin", "Sandman", "Doctor Octopus"]
+  },
+  {
+    "question": "Quel est le vrai nom de l'anti-héros Deadpool ?",
+    "difficulty": "Medium",
+    "category": "Marvel",
+    "correct_answer": "Wade Wilson",
+    "choices": ["Wade Wilson", "Peter Parker", "Matt Murdock", "Tony Stark"]
+  },
+  {
+    "question":
+      "Quel personnage de Marvel est connu sous le nom de \"l'homme sans peur\" ?",
+    "difficulty": "Medium",
+    "category": "Marvel",
+    "correct_answer": "Daredevil",
+    "choices": ["Iron Fist", "Daredevil", "Punisher", "Luke Cage"]
+  },
+  {
+    "question":
+      "Qui est le super-héros Marvel qui est capable de manipuler la réalité avec son pouvoir mutant ?",
+    "difficulty": "Medium",
+    "category": "Marvel",
+    "correct_answer": "Scarlet Witch",
+    "choices": ["Magneto", "Scarlet Witch", "Quicksilver", "Storm"]
+  },
+  {
+    "question": "Quel est le nom de la planète d'origine de Thor ?",
+    "difficulty": "Medium",
+    "category": "Marvel",
+    "correct_answer": "Asgard",
+    "choices": ["Asgard", "Midgard", "Jotunheim", "Svartalfheim"]
+  },
+  {
+    "question": "Dans l'univers Marvel, qui est le chef des X-Men ?",
+    "difficulty": "Medium",
+    "category": "Marvel",
+    "correct_answer": "Professor X",
+    "choices": ["Cyclope", "Wolverine", "Professor X", "Magneto"]
+  }
+]

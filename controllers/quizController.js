@@ -31,6 +31,7 @@ exports.answerQuestion = catchAsync(async (req, res, next) => {
     const {category, id} = req.params;
     const {answer} = req.body;
     let iscorrect = false;
+    let nextQuestion = null;
 
     if (!answer) {
         return next(new AppError('Une réponse est requise', 400))
@@ -38,15 +39,43 @@ exports.answerQuestion = catchAsync(async (req, res, next) => {
     const quiz = await Quiz.findById(id,'+correct_answer')
     if (!quiz)
         return next(new AppError('quiz not found', 404))
-    if (quiz.correct_answer === answer) {
-        iscorrect = true;
-    }
+
     const userQuiz = req.user.quiz.filter(el => el.category === category)
     console.log(userQuiz)
-
+    const index = userQuiz[0].idQuestion.findIndex(el => el === id)
+    if (index === -1) {
+        return next(new AppError('Erreur, aucune question ne correspond à votre requete', 400))
+    }
+    if(userQuiz[0].info[index] && userQuiz[0].info[index].isAnswer){
+        return next(new AppError('Vous avez déjà répondu à cette question', 400))
+    }
+    if (quiz.correct_answer === answer) {
+        iscorrect = true;
+        userQuiz[0].score += 1;
+    }
+    userQuiz[0].info[index] = {
+        question : quiz.question,
+        answer : quiz.correct_answer,
+        userAnswer : answer,
+        success : iscorrect,
+        isAnswer : true
+    }
+    await User.findByIdAndUpdate(req.user._id, req.user)
+    if (userQuiz[0].idQuestion[index +1]){
+        idQUestion = userQuiz[0].idQuestion[index +1]
+        nextQuestion= `${req.protocol}://${req.headers.host}/api/quiz/${category}/${idQUestion}`
+    }
+    else
+        nextQuestion = "finish"
+    
     res.status(200).json({
         success: "success",
-        data : iscorrect
+        data : {
+            response : iscorrect,
+            nextQuestion,
+            score :  userQuiz[0].score,
+            nbQuestions :  userQuiz[0].nbQuestions
+        }
     })
 })
 
@@ -60,6 +89,7 @@ exports.startQuiz = catchAsync(async (req, res, next) => {
     const quizStart = tabUserQuiz.filter(el => el.category === category)
     if (quizStart.length === 0 )
     {
+        
         const quizOption = {
             category,
             nbQuestions: quiz.length,
@@ -68,17 +98,22 @@ exports.startQuiz = catchAsync(async (req, res, next) => {
         }
         quizStart.push(quizOption)
         quiz.forEach(el => quizStart[0].idQuestion.push(el.id))
-
         if (req.user.quiz.length === 0)
             req.user.quiz = quizStart;
-        else
-            req.user.quiz.forEach(el => { 
-                if (el.category === category)
-                    el = quizStart
-                }
-            )
+        else{
+            const found = req.user.quiz.find(el => el.category === category);
+            if (found){
+                req.user.quiz.forEach(el => { 
+                    if (el.category === category)
+                        el = quizStart
+                    }
+                )
+            }else 
+                req.user.quiz.push(quizStart[0])
+        }
     }
     else {
+        quizStart[0].score = 0
         quizStart[0].info.forEach(el => el.isAnswer = false)
     }
     const updateUser = await User.findByIdAndUpdate(req.user.id, req.user)
