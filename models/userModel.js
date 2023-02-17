@@ -42,11 +42,13 @@ const userSchema = new mongoose.Schema({
   quiz : [
     {
       category : String,
+      nbQuestions : Number,
+      idQuestion : [String],
       info : [{
         question : String,
         answer : String,
         userAnswer : String,
-        sucess : Boolean,
+        success : Boolean,
         isAnswer : {
           type : Boolean,
           default : false
