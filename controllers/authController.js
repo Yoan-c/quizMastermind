@@ -11,9 +11,9 @@ const createToken = (id) => {
 };
 
 const decodedToken = (token) => {
-  const {id} = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
-  return id
-}
+  const { id } = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
+  return id;
+};
 
 const sendToken = (res, id) => {
   const token = createToken(id);
@@ -73,24 +73,23 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.logout = catchAsync(async (req, res, next) => {
   if (req.cookies && req.cookies.jwt) {
-    res.clearCookie('jwt', { expires: new Date(Date.now() - 5000) })
+    res.clearCookie("jwt", { expires: new Date(Date.now() - 5000) });
   }
 
   res.status(200).json({
-    status : "success",
-    message : "Disconected"
-  })
-})
+    status: "success",
+    message: "Disconected",
+  });
+});
 
-exports.proctect = catchAsync(async(req, res, next) => {
+exports.proctect = catchAsync(async (req, res, next) => {
   if (req.cookies && req.cookies.jwt) {
-      const id = decodedToken(req.cookies.jwt)
-      const user = await User.findById(id)
-      if (user){
-        req.user = user
-        return  next();
-      }
+    const id = decodedToken(req.cookies.jwt);
+    const user = await User.findById(id);
+    if (user) {
+      req.user = user;
+      return next();
+    }
   }
-  return next(new AppError("Vous n'êtes pas connecté", 401))
-
-})
+  return next(new AppError("Vous n'êtes pas connecté", 401));
+});

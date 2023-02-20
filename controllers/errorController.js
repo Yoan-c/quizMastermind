@@ -11,6 +11,7 @@ module.exports = (err, req, res, next) => {
 };
 
 const sendErrorDev = (req, res, err) => {
+  console.error(err);
   if (err.code === 11000) return sendDuplicate(req, res, err);
   if (err.name === "CastError") return sendCastError(req, res, err);
 

@@ -3,6 +3,14 @@
     justify-content: center;
     align-items: center;
     height: 60vh;
+    flex-direction: column;
+
+    &__error {
+        color: $color-primary;
+        align-self: flex-start;
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
 
     &__field {
         display: flex;

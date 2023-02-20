@@ -28,6 +28,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 60vh;
+  flex-direction: column;
+}
+.form__error {
+  color: #930202;
+  align-self: flex-start;
+  font-size: 1.2rem;
+  font-weight: 800;
 }
 .form__field {
   display: flex;

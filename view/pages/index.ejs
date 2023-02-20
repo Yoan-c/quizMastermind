@@ -9,7 +9,7 @@
         <li>
           <a href="/" rel="noopener noreferrer">Accueil</a>
         </li>
-        <% if (typeof user == 'object' && user) { %>
+        <% if (typeof isLoggued !== 'undefined' && isLoggued) { %> %>
         <li>
           <a href="#" rel="noopener noreferrer">Profil</a>
         </li>

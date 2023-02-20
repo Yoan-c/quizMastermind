@@ -39,27 +39,29 @@ const userSchema = new mongoose.Schema({
       message: `Les mot de passe sont différents`,
     },
   },
-  quiz : [
+  quiz: [
     {
-      category : String,
-      nbQuestions : Number,
-      score :{
-        type : Number,
-        default : 0
+      category: String,
+      nbQuestions: Number,
+      score: {
+        type: Number,
+        default: 0,
       },
-      idQuestion : [String],
-      info : [{
-        question : String,
-        answer : String,
-        userAnswer : String,
-        success : Boolean,
-        isAnswer : {
-          type : Boolean,
-          default : false
-        }
-      }]
-    }
-  ]
+      idQuestion: [String],
+      info: [
+        {
+          question: String,
+          answer: String,
+          userAnswer: String,
+          success: Boolean,
+          isAnswer: {
+            type: Boolean,
+            default: false,
+          },
+        },
+      ],
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {
@@ -71,16 +73,16 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.statics.loginUser = async function (email, pseudo, password) {
-  let user;
+  let user = null;
+  let result = null;
   if (email) {
     user = await this.findOne({ email }).select("+password");
-    const result = await bcrypt.compare(password, user.password);
-    return result ? user._id : result;
+    if (user) result = await bcrypt.compare(password, user.password);
   } else {
     user = await this.findOne({ pseudo }).select("+password");
-    const result = await bcrypt.compare(password, user.password);
-    return result ? user._id : result;
+    if (user) result = await bcrypt.compare(password, user.password);
   }
+  return user && result ? user._id : result;
 };
 
 const User = mongoose.model("User", userSchema);
