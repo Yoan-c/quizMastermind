@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
+const QuizInfo = require("../models/quizInfoModel");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
@@ -10,9 +11,9 @@ const loggued = (req) => {
 };
 
 const sendPage = (req, res, ...obj) => {
-  console.log(obj[0]);
   const data = obj[0];
   const { namePage } = obj[0];
+  data.quizInfo = req.quiz;
   res.render(`${__dirname}/../view/pages/${namePage}`, {
     title: "Quiz Mastermind",
     data,
@@ -60,3 +61,10 @@ exports.logout = (req, res, next) => {
   }
   sendPage(req, res, { namePage: "index" });
 };
+
+exports.getQuiz = catchAsync(async (req, res, next) => {
+  const quiz = await QuizInfo.find().select("-_id");
+  if (quiz) req.quiz = quiz;
+  else req.quiz = null;
+  next();
+});

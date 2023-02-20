@@ -1,24 +1,28 @@
+<% data.quizInfo.forEach((el, index) => { %> <% if(index % 2 === 0) {%>
 <div class="quiz">
-  <div class="quiz__presentation">
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque voluptate
-      reiciendis fuga quod exercitationem adipisci quos, est nisi, hic maiores
-      deleniti? Tempora quos voluptates soluta accusamus, a laborum nobis nisi?
-    </p>
-  </div>
-  <div class="quiz__img">
-    <img src="#" alt="Image quiz" />
-  </div>
-</div>
-<div class="quiz--inversed">
-  <div class="quiz__presentation--inversed">
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque voluptate
-      reiciendis fuga quod exercitationem adipisci quos, est nisi, hic maiores
-      deleniti? Tempora quos voluptates soluta accusamus, a laborum nobis nisi?
-    </p>
-  </div>
-  <div class="quiz__img--inversed">
-    <img src="#" alt="Image quiz" />
+  <div class="quiz__category"><%= el.category%></div>
+  <div class="quiz__info">
+    <div class="quiz__presentation">
+      <% }else {%>
+      <div class="quiz--inversed">
+        <div class="quiz__category"><%= el.category%></div>
+        <div class="quiz__info--inversed">
+          <div class="quiz__presentation--inversed">
+            <% }%>
+            <p><%= el.description%></p>
+            <p>aaa <%= el.category%> <%= el.test%>cccc</p>
+          </div>
+          <% if(index % 2 === 0) {%>
+          <div class="quiz__img">
+            <% }else {%>
+            <div class="quiz__img--inversed">
+              <% }%>
+              <img src="#" alt="<%=el.image%>" />
+            </div>
+          </div>
+        </div>
+        <%}); %>
+      </div>
+    </div>
   </div>
 </div>

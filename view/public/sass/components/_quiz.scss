@@ -1,7 +1,29 @@
 .quiz {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10rem;
+    flex-direction: column;
+
+    margin-bottom: 5rem;
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+
+        &--inversed {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            margin-bottom: 5rem;
+        }
+    }
+
+    &__category {
+        align-self: center;
+        color: $color-primary;
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        padding: .6rem;
+    }
 
     &__presentation {
         width: 50%;
@@ -9,15 +31,13 @@
 
         &--inversed {
             width: 50%;
-            margin-left: 10rem;
         }
     }
 
     &--inversed {
         display: flex;
-        justify-content: space-between;
-        flex-direction: row-reverse;
-        margin-bottom: 10rem;
+        flex-direction: column;
+        margin-bottom: 5rem;
     }
 
 
