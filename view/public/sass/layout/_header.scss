@@ -1,0 +1,15 @@
+.header  {
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    &__title {
+        cursor: pointer;
+        margin-left: 16rem;
+        transition: all .2s;
+        &:hover {
+            transform: scale(1.1) translateY(-.3rem);
+        }
+    }
+}

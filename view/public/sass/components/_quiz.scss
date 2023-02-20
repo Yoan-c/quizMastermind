@@ -1,0 +1,24 @@
+.quiz {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10rem;
+
+    &__presentation {
+        width: 50%;
+        margin-right: 10rem;
+
+        &--inversed {
+            width: 50%;
+            margin-left: 10rem;
+        }
+    }
+
+    &--inversed {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        margin-bottom: 10rem;
+    }
+
+
+}

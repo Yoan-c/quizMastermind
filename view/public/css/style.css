@@ -1,3 +1,163 @@
-body {
-    background: yellow;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  max-width: 114rem;
+  margin: 0 auto;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background: #930202;
+  font-size: 1.6rem;
+  color: #f9d9b8;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+.form__field {
+  display: flex;
+  flex-direction: column;
+}
+.form__login form {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+}
+.form__login form > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.form__signUp form {
+  display: flex;
+  flex-direction: column;
+}
+.form__signUp form > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.form__label {
+  color: #930202;
+  font-size: 2.2rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+}
+.form input {
+  height: 3rem;
+  font-size: 1.6rem;
+  border: none;
+  border-bottom: 0.1rem solid #000000;
+  max-width: 40rem;
+}
+
+a {
+  text-decoration: none;
+  color: #f9d9b8;
+}
+
+.quiz {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rem;
+}
+.quiz__presentation {
+  width: 50%;
+  margin-right: 10rem;
+}
+.quiz__presentation--inversed {
+  width: 50%;
+  margin-left: 10rem;
+}
+.quiz--inversed {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin-bottom: 10rem;
+}
+
+.section {
+  background-color: white;
+  min-width: 80%;
+  border-radius: 2rem;
+  color: #777;
+  position: relative;
+}
+.section__content {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.btn {
+  background-color: #930202;
+  color: #f9d9b8;
+  height: 4.8rem;
+  max-width: 20rem;
+  border-radius: 1.2rem;
+  border: none;
+}
+
+.header {
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+.header__title {
+  cursor: pointer;
+  margin-left: 16rem;
+  transition: all 0.2s;
+}
+.header__title:hover {
+  transform: scale(1.1) translateY(-0.3rem);
+}
+
+.nav {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-right: 5rem;
+}
+.nav__menu ul {
+  list-style: none;
+  line-height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.nav__menu ul li {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nav__menu ul li:not(:first-child) {
+  margin-top: 2rem;
+}
+.nav__menu ul li:hover {
+  transform: scale(1.1);
+}
+
+.main {
+  background-color: #930202;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 auto;
+  margin-left: 5rem;
+  height: 70vh;
+}
+
+/*# sourceMappingURL=style.css.map */

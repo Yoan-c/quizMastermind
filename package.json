@@ -4,7 +4,8 @@
   "description": "Application de quizz",
   "main": "server.js",
   "scripts": {
-    "start": "SET NODE_ENV=development&& nodemon server.js"
+    "start": "SET NODE_ENV=development&& nodemon server.js",
+    "sass" : "sass view/public/sass/index.scss view/public/css/style.css -w"
   },
   "repository": {
     "type": "git",

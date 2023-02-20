@@ -1,0 +1,65 @@
+<div class="form">
+  <% if (askConnect === 'sign up') {%>
+  <div class="form__signUp">
+    <form action="#" method="post">
+      <div class="form__field">
+        <label for="pseudo" class="form__label">Pseudo :</label>
+        <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" />
+      </div>
+      <div class="form__field">
+        <label for="Email" class="form__label">Email :</label>
+        <input type="email" name="Email" id="Email" placeholder="Email" />
+      </div>
+      <div class="form__field">
+        <label for="password" class="form__label">Mot de passe :</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="********"
+        />
+      </div>
+      <div class="form__field">
+        <label for="confPassword" class="form__label">
+          Confirmation mot de passe :
+        </label>
+        <input
+          type="password"
+          name="confPassword"
+          id="confPassword"
+          placeholder="********"
+        />
+      </div>
+      <div class="form__field">
+        <button type="submit" class="btn form__btn">Inscription</button>
+      </div>
+    </form>
+  </div>
+  <% }else {%>
+  <div class="form__login">
+    <form action="#" method="post">
+      <div class="form__field">
+        <label for="idConnect" class="form__label">Email / Pseudo :</label>
+        <input
+          type="text"
+          name="idConnect"
+          id="idConnect"
+          placeholder="Email / Pseudo"
+        />
+      </div>
+      <div class="form__field">
+        <label for="password" class="form__label">Mot de passe :</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="********"
+        />
+      </div>
+      <div class="form__field">
+        <button type="submit" class="btn form__login">Connexion</button>
+      </div>
+    </form>
+  </div>
+  <% }%>
+</div>

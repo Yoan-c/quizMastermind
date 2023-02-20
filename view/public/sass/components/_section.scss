@@ -1,0 +1,13 @@
+.section {
+    background-color: white;
+    min-width: 80%;
+    border-radius: 2rem;
+    color: $color-grey-dark;
+    position: relative;
+
+    &__content {
+        max-width: 80%;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+}

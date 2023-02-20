@@ -1,20 +1,40 @@
 <%- include('./header'); %>
 <header class="header">
-    <div class="header--title">
-        QuizMastemind
-    </div>
+  <div class="header__title"><h1>QuizMastemind</h1></div>
 </header>
-<nav class="nav">
-    <div class="nav--menu">
-        <ul>
-            <li>a</li>
-            <li>b</li>
-            <li>c</li>
-        </ul>
-    </div>
-</nav>
 <main class="main">
-    corps
+  <nav class="nav">
+    <div class="nav__menu">
+      <ul>
+        <li>
+          <a href="/" rel="noopener noreferrer">Accueil</a>
+        </li>
+        <% if (typeof user == 'object' && user) { %>
+        <li>
+          <a href="#" rel="noopener noreferrer">Profil</a>
+        </li>
+        <li>
+          <a href="#" rel="noopener noreferrer">Quiz</a>
+        </li>
+        <% } else {%>
+        <li>
+          <a href="/login" rel="noopener noreferrer">Connexion</a>
+        </li>
+        <li>
+          <a href="/signup" rel="noopener noreferrer">Inscription</a>
+
+          <% }%>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <section class="section">
+    <div class="section__content">
+      <% if(typeof askConnect !== 'undefined' && (askConnect === 'login' ||
+      askConnect === 'sign up')) { %> <%- include('./connect'); %> <%}%> <%
+      if(typeof askConnect === 'undefined') {%> <%- include('./quiz_index'); %>
+      <%}%>
+    </div>
+  </section>
 </main>
 <%- include('./footer'); %>
-    
