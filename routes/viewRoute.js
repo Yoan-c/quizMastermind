@@ -8,6 +8,7 @@ router
   .route("/login")
   .get(viewController.getFormLogin)
   .post(viewController.login);
+router.route("/logout").get(viewController.logout);
 router.route("/signup").get(viewController.getFormSignUp);
 
 module.exports = router;

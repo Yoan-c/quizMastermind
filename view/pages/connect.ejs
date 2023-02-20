@@ -1,7 +1,7 @@
 <div class="form">
-  <% if (askConnect === 'sign up') {%>
+  <% if (data.askConnect === 'sign up') {%>
   <div class="form__signUp">
-    <div class="form__error" id="formError">error :</div>
+    <div class="form__error" id="formError"></div>
     <form action="#" method="post" id="formLogin">
       <div class="form__field">
         <label for="pseudo" class="form__label">Pseudo :</label>
@@ -44,7 +44,7 @@
   </div>
   <% }else {%>
   <div class="form__login">
-    <div class="form__error" id="formError">error :</div>
+    <div class="form__error" id="formError"></div>
     <form action="#" method="post">
       <div class="form__field">
         <label for="idConnect" class="form__label">Email / Pseudo :</label>

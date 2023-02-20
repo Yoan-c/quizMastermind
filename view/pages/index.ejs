@@ -9,12 +9,15 @@
         <li>
           <a href="/" rel="noopener noreferrer">Accueil</a>
         </li>
-        <% if (typeof isLoggued !== 'undefined' && isLoggued) { %> %>
+        <% if (typeof data.isLoggued !== 'undefined' && data.isLoggued) { %> %>
         <li>
           <a href="#" rel="noopener noreferrer">Profil</a>
         </li>
         <li>
           <a href="#" rel="noopener noreferrer">Quiz</a>
+        </li>
+        <li>
+          <a href="/logout" rel="noopener noreferrer">Déconnexion</a>
         </li>
         <% } else {%>
         <li>
@@ -30,10 +33,10 @@
   </nav>
   <section class="section">
     <div class="section__content">
-      <% if(typeof askConnect !== 'undefined' && (askConnect === 'login' ||
-      askConnect === 'sign up')) { %> <%- include('./connect'); %> <%}%> <%
-      if(typeof askConnect === 'undefined') {%> <%- include('./quiz_index'); %>
-      <%}%>
+      <% if(typeof data.askConnect !== 'undefined' && (data.askConnect ===
+      'login' || data.askConnect === 'sign up')) { %> <%- include('./connect');
+      %> <%}%> <% if(typeof data.askConnect === 'undefined') {%> <%-
+      include('./quiz_index'); %> <%}%>
     </div>
   </section>
 </main>

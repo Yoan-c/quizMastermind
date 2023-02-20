@@ -9,33 +9,32 @@ const loggued = (req) => {
   return isLoggued;
 };
 
+const sendPage = (req, res, ...obj) => {
+  console.log(obj[0]);
+  const data = obj[0];
+  const { namePage } = obj[0];
+  res.render(`${__dirname}/../view/pages/${namePage}`, {
+    title: "Quiz Mastermind",
+    data,
+  });
+};
+
 exports.index = (req, res, next) => {
   // RECHERCHER LES QUIZ ET LEUR DESCRIPTION + IMG
   let isLoggued = false;
   isLoggued = loggued(req);
-  res.render(`${__dirname}/../view/pages/index`, {
-    title: "Quiz Mastermind",
-    isLoggued,
-  });
+  sendPage(req, res, { namePage: "index", isLoggued });
 };
 
 exports.getFormLogin = (req, res, next) => {
-  res.render(`${__dirname}/../view/pages/index`, {
-    title: "Quiz Mastermind",
-    askConnect: "login",
-  });
+  sendPage(req, res, { namePage: "index", askConnect: "login" });
 };
 exports.getFormSignUp = (req, res, next) => {
-  res.render(`${__dirname}/../view/pages/index`, {
-    title: "Quiz Mastermind",
-    askConnect: "sign up",
-  });
+  sendPage(req, res, { namePage: "index", askConnect: "sign up" });
 };
 
 exports.login = (req, res, next) => {
-  res.render(`${__dirname}/../view/pages/index`, {
-    title: "Quiz Mastermind",
-  });
+  sendPage(req, res, { namePage: "index" });
 };
 
 exports.loggued = async (req, res, next) => {
@@ -53,4 +52,11 @@ exports.loggued = async (req, res, next) => {
   } catch (err) {
     next();
   }
+};
+
+exports.logout = (req, res, next) => {
+  if (req.cookies && req.cookies.jwt) {
+    res.clearCookie("jwt", { expires: new Date(Date.now() - 5000) });
+  }
+  sendPage(req, res, { namePage: "index" });
 };
