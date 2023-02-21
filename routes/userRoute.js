@@ -5,7 +5,8 @@ const quizController = require("../controllers/quizController");
 const router = express.Router();
 
 
-router.route("/").get(userController.getUser).post(authController.createUser);
+router.route("/").get(userController.getUser);
+router.route("/signup").post(authController.createUser);
 
 router.route("/login").post(authController.login);
 router.route("/logout").get(authController.logout);

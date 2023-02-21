@@ -35,7 +35,7 @@ exports.createUser = catchAsync(async (req, res, next) => {
     password,
     confirmPassword,
   });
-
+  user.password = "";
   res.status(200).json({
     status: "success",
     user,

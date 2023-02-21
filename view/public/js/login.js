@@ -21,6 +21,29 @@ export const login = async (id, password) => {
     divError.innerHTML = `Error : ${e.response.data.message}`;
   }
 };
+export const signup = async (pseudo, email, password, confirmPassword) => {
+  try {
+    const res = await axios({
+      method: "POST",
+      url: "http://127.0.0.1:3000/api/users/signup",
+      data: {
+        email,
+        pseudo,
+        password,
+        confirmPassword
+      },
+    });
+    if (res.data.status === "success") {
+      document.getElementById("formSuccess").innerHTML="Utilisateur crée vous allez etre redirigé pour vous connecter / ou connectez vous ";
+      window.setTimeout(() => {
+        location.assign("/login");
+      }, 5000);
+    }
+  } catch (e) {
+    let divError = document.getElementById("formError");
+    divError.innerHTML = `Error : ${e.response.data.message}`;
+  }
+};
 
 export const updateUser = async(data) => {
 

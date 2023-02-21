@@ -11955,7 +11955,7 @@ exports.Axios = Axios;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateUser = exports.updatePassword = exports.login = void 0;
+exports.updateUser = exports.updatePassword = exports.signup = exports.login = void 0;
 var _axios = _interopRequireDefault(require("axios"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -12004,8 +12004,8 @@ var login = /*#__PURE__*/function () {
   };
 }();
 exports.login = login;
-var updateUser = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(data) {
+var signup = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(pseudo, email, password, confirmPassword) {
     var res, divError;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
@@ -12013,35 +12013,42 @@ var updateUser = /*#__PURE__*/function () {
           _context2.prev = 0;
           _context2.next = 3;
           return (0, _axios.default)({
-            method: "PATCH",
-            url: "http://127.0.0.1:3000/api/users/update",
-            data: data
+            method: "POST",
+            url: "http://127.0.0.1:3000/api/users/signup",
+            data: {
+              email: email,
+              pseudo: pseudo,
+              password: password,
+              confirmPassword: confirmPassword
+            }
           });
         case 3:
           res = _context2.sent;
           if (res.data.status === "success") {
-            document.getElementById("formSuccess").innerHTML = "Mis à jour effectué";
+            document.getElementById("formSuccess").innerHTML = "Utilisateur crée vous allez etre redirigé pour vous connecter / ou connectez vous ";
+            window.setTimeout(function () {
+              location.assign("/login");
+            }, 5000);
           }
-          _context2.next = 12;
+          _context2.next = 11;
           break;
         case 7:
           _context2.prev = 7;
           _context2.t0 = _context2["catch"](0);
-          console.log(_context2.t0.response.data.message);
           divError = document.getElementById("formError");
           divError.innerHTML = "Error : ".concat(_context2.t0.response.data.message);
-        case 12:
+        case 11:
         case "end":
           return _context2.stop();
       }
     }, _callee2, null, [[0, 7]]);
   }));
-  return function updateUser(_x3) {
+  return function signup(_x3, _x4, _x5, _x6) {
     return _ref2.apply(this, arguments);
   };
 }();
-exports.updateUser = updateUser;
-var updatePassword = /*#__PURE__*/function () {
+exports.signup = signup;
+var updateUser = /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(data) {
     var res, divError;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
@@ -12051,31 +12058,68 @@ var updatePassword = /*#__PURE__*/function () {
           _context3.next = 3;
           return (0, _axios.default)({
             method: "PATCH",
-            url: "http://127.0.0.1:3000/api/users/updatePassword",
+            url: "http://127.0.0.1:3000/api/users/update",
             data: data
           });
         case 3:
           res = _context3.sent;
           if (res.data.status === "success") {
-            document.getElementById("formSuccess").innerHTML = "Mot de passe modifié";
+            document.getElementById("formSuccess").innerHTML = "Mis à jour effectué";
           }
-          console.log(res);
-          _context3.next = 13;
+          _context3.next = 12;
           break;
-        case 8:
-          _context3.prev = 8;
+        case 7:
+          _context3.prev = 7;
           _context3.t0 = _context3["catch"](0);
           console.log(_context3.t0.response.data.message);
           divError = document.getElementById("formError");
           divError.innerHTML = "Error : ".concat(_context3.t0.response.data.message);
-        case 13:
+        case 12:
         case "end":
           return _context3.stop();
       }
-    }, _callee3, null, [[0, 8]]);
+    }, _callee3, null, [[0, 7]]);
   }));
-  return function updatePassword(_x4) {
+  return function updateUser(_x7) {
     return _ref3.apply(this, arguments);
+  };
+}();
+exports.updateUser = updateUser;
+var updatePassword = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(data) {
+    var res, divError;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.prev = 0;
+          _context4.next = 3;
+          return (0, _axios.default)({
+            method: "PATCH",
+            url: "http://127.0.0.1:3000/api/users/updatePassword",
+            data: data
+          });
+        case 3:
+          res = _context4.sent;
+          if (res.data.status === "success") {
+            document.getElementById("formSuccess").innerHTML = "Mot de passe modifié";
+          }
+          console.log(res);
+          _context4.next = 13;
+          break;
+        case 8:
+          _context4.prev = 8;
+          _context4.t0 = _context4["catch"](0);
+          console.log(_context4.t0.response.data.message);
+          divError = document.getElementById("formError");
+          divError.innerHTML = "Error : ".concat(_context4.t0.response.data.message);
+        case 13:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4, null, [[0, 8]]);
+  }));
+  return function updatePassword(_x8) {
+    return _ref4.apply(this, arguments);
   };
 }();
 exports.updatePassword = updatePassword;
@@ -12406,6 +12450,7 @@ var _login = require("./login");
 var _game = require("./game");
 var gameStart = document.getElementById("gameStart");
 var btnConnection = document.getElementById("btnConnection");
+var btnInscription = document.getElementById("btnInscription");
 var btnUpdate = document.getElementById("btnUpdate");
 var btnUpdatePassword = document.getElementById("btnUpdatePassword");
 if (btnConnection) {
@@ -12414,6 +12459,16 @@ if (btnConnection) {
     var idConnect = document.getElementById("idConnect").value;
     var password = document.getElementById("password").value;
     (0, _login.login)(idConnect, password);
+  });
+}
+if (btnInscription) {
+  btnInscription.addEventListener("click", function (e) {
+    e.preventDefault();
+    var email = document.getElementById("Email").value;
+    var pseudo = document.getElementById("pseudo").value;
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    (0, _login.signup)(pseudo, email, password, confirmPassword);
   });
 }
 if (btnUpdate) {

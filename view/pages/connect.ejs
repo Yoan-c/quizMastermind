@@ -2,6 +2,7 @@
   <% if (data.askConnect === 'sign up') {%>
   <div class="form__signUp">
     <div class="form__error" id="formError"></div>
+    <div class="form__success" id="formSuccess"></div>
     <form action="#" method="post" id="formLogin">
       <div class="form__field">
         <label for="pseudo" class="form__label">Pseudo :</label>
@@ -27,18 +28,18 @@
         />
       </div>
       <div class="form__field">
-        <label for="confPassword" class="form__label">
+        <label for="confirmPassword" class="form__label">
           Confirmation mot de passe :
         </label>
         <input
           type="password"
-          name="confPassword"
-          id="confPassword"
+          name="confirmPassword"
+          id="confirmPassword"
           placeholder="********"
         />
       </div>
       <div class="form__field">
-        <button type="submit" class="btn form__btn">Inscription</button>
+        <button type="submit" class="btn form__btn" id="btnInscription">Inscription</button>
       </div>
     </form>
   </div>

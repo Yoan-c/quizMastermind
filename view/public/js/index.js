@@ -1,9 +1,10 @@
 import "@babel/polyfill";
-import { login, updateUser, updatePassword } from "./login";
+import { login, updateUser, updatePassword, signup } from "./login";
 import { startGame } from "./game";
 
 let gameStart = document.getElementById("gameStart");
 let btnConnection = document.getElementById("btnConnection");
+let btnInscription = document.getElementById("btnInscription");
 let btnUpdate = document.getElementById("btnUpdate");
 let btnUpdatePassword = document.getElementById("btnUpdatePassword");
 
@@ -13,6 +14,17 @@ if (btnConnection) {
     let idConnect = document.getElementById("idConnect").value;
     let password = document.getElementById("password").value;
     login(idConnect, password);
+  });
+}
+if (btnInscription) {
+  btnInscription.addEventListener("click", (e) => {
+    e.preventDefault();
+    
+    let email = document.getElementById("Email").value;
+    let pseudo = document.getElementById("pseudo").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+    signup(pseudo, email, password, confirmPassword);
   });
 }
 
