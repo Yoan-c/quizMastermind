@@ -10,9 +10,17 @@ const loggued = (req) => {
   return isLoggued;
 };
 
+const checkConnection = (req, page) => {
+  if (loggued(req)) return page;
+  return "index";
+};
+
 const sendPage = (req, res, ...obj) => {
   const data = obj[0];
   const { namePage } = obj[0];
+  let isLoggued = false;
+  isLoggued = loggued(req);
+  data.isLoggued = isLoggued;
   data.quizInfo = req.quiz;
   res.render(`${__dirname}/../view/pages/${namePage}`, {
     title: "Quiz Mastermind",
@@ -22,9 +30,8 @@ const sendPage = (req, res, ...obj) => {
 
 exports.index = (req, res, next) => {
   // RECHERCHER LES QUIZ ET LEUR DESCRIPTION + IMG
-  let isLoggued = false;
-  isLoggued = loggued(req);
-  sendPage(req, res, { namePage: "index", isLoggued });
+
+  sendPage(req, res, { namePage: "index" });
 };
 
 exports.getFormLogin = (req, res, next) => {
@@ -68,3 +75,11 @@ exports.getQuiz = catchAsync(async (req, res, next) => {
   else req.quiz = null;
   next();
 });
+
+exports.startQuiz = (req, res, next) => {
+  const { category } = req.params;
+  let namePage = checkConnection(req, "quiz");
+
+  if (!category) namePage = checkConnection(req, "index");
+  sendPage(req, res, { namePage, start: true, category });
+};

@@ -1,0 +1,23 @@
+[
+    {
+    "question": "Qui est l'auteur de la série Harry Potter ?",
+    "difficulty": "Hard",
+    "category": "Harry Potter",
+    "correct_answer": "J.K. Rowling",
+    "choices": ["J.K. Rowling", "Suzanne Collins", "Stephenie Meyer", "Veronica Roth"]
+  },
+  {
+    "question": "Dans quelle école de sorcellerie Harry Potter étudie-t-il ?",
+    "difficulty": "Easy",
+    "category": "Harry Potter",
+    "correct_answer": "Poudlard",
+    "choices": ["Poudlard", "Durmstrang", "Beauxbâtons", "Mahoutokoro"]
+  },
+  {
+    "question": "Quel animal est l'animal de compagnie d'Harry Potter ?",
+    "difficulty": "Easy",
+    "category": "Harry Potter",
+    "correct_answer": "Un hibou nommé Edwige",
+    "choices": ["Un hibou nommé Edwige", "Un chat nommé Croûtard", "Un rat nommé Couineur", "Un chien nommé Touffu"]
+  }
+]

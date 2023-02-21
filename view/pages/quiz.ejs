@@ -1,0 +1,25 @@
+<%- include('./header'); %>
+<header class="header">
+  <div class="header__title"><h1>QuizMastemind</h1></div>
+</header>
+<main class="main">
+  <%- include('./nav'); %>
+  <section class="section">
+    <div class="section__content">
+      <div class="game" id="game">
+        <div class="game__header" id="game__header">
+          <div class="game__title">
+            Quiz <span id="category"><%= data.category%></span>
+          </div>
+          <div class="game__error" id="game__error"></div>
+        </div>
+        <% if(data.start){%>
+        <div class="game__btn" id="game__btn">
+          <button id="gameStart" class="btn game__btn__start">Commencer</button>
+        </div>
+        <%}%>
+      </div>
+    </div>
+  </section>
+</main>
+<%- include('./footer'); %>

@@ -22,12 +22,15 @@ mongoose
   });
 
 let fichier = fs.readFileSync(`${__dirname}/quizzMarvel.json`, "utf8");
+let fichierPotter = fs.readFileSync(`${__dirname}/quizzHarryPotter.json`, "utf8");
 
 const MarverQuiz = JSON.parse(fichier);
+const PotterQuiz = JSON.parse(fichierPotter);
 
 const ImportData = async () => {
   try {
     await quizModel.create(MarverQuiz);
+    await quizModel.create(PotterQuiz);
     console.log("DATA IMPORTED");
   } catch (err) {
     console.log(`error import data: ${err}`);

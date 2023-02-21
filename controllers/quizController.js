@@ -15,15 +15,22 @@ exports.getAll = catchAsync(async (req, res, next) => {
 
 exports.getOneQuestion = catchAsync(async (req, res, next) => {
     const {category, id} = req.params;
+    let numQuestion = 0;
     if (!category && !id) {
         return next(new AppError('categorie and id sont requis', 400))
     }
     const quiz = await Quiz.findById(id)
     if (!quiz)
     return next(new AppError('quiz not found', 404))
+    if (req.user && req.user.numQuestion) {
+        numQuestion = req.user.numQuestion
+        req.user.numQuestion++
+    }
     res.status(200).json({
         success: "success",
-        data : quiz
+        data : quiz,
+        numQuestion,
+        nbQuestions : quiz.length
     })
 })
 
@@ -71,7 +78,9 @@ exports.answerQuestion = catchAsync(async (req, res, next) => {
     res.status(200).json({
         success: "success",
         data : {
+            numQuestion : index + 1,
             response : iscorrect,
+            correct_answer : quiz.correct_answer,
             nextQuestion,
             score :  userQuiz[0].score,
             nbQuestions :  userQuiz[0].nbQuestions
@@ -115,11 +124,17 @@ exports.startQuiz = catchAsync(async (req, res, next) => {
     else {
         quizStart[0].score = 0
         quizStart[0].info.forEach(el => el.isAnswer = false)
+        quizStart[0].idQuestion = [];
+        quizStart[0].nbQuestions = quiz.length;
+        quiz.forEach(el => quizStart[0].idQuestion.push(el.id))
     }
     const updateUser = await User.findByIdAndUpdate(req.user.id, req.user)
     const url= `${req.protocol}://${req.headers.host}/api/quiz/${category}/${quizStart[0].idQuestion[0]}`
     res.status(200).json({
         success: "success",
-        data : {url}
+        data : {
+            url,
+            nbQuestions : quiz.length
+        }
     })
 })

@@ -70,6 +70,119 @@ body {
   max-width: 40rem;
 }
 
+.game__error {
+  color: #930202;
+}
+.game__btn {
+  margin-top: 20rem;
+}
+.game__btn__start {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.game__title {
+  color: #930202;
+  font-size: 2.4rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.3rem;
+  margin-bottom: 2rem;
+}
+.game__info {
+  color: #000000;
+  font-weight: 600;
+}
+.game__numQuestion {
+  padding: 0.8rem 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+.game__question {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.game__radio {
+  min-height: 3.5rem;
+  padding: 0.3rem;
+  position: relative;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.game__radio:hover {
+  background-color: #777;
+}
+.game__radio--success {
+  background-color: #00A84D;
+  color: #f9d9b8;
+}
+.game__radio--success:hover {
+  background-color: #00A84D;
+  color: #f9d9b8;
+}
+.game__radio--fail {
+  background-color: #d30000;
+  color: #f9d9b8;
+}
+.game__radio--fail:hover {
+  background-color: #d30000;
+  color: #f9d9b8;
+}
+.game__choices input {
+  display: none;
+}
+.game__choices label {
+  position: absolute;
+  top: 0.8rem;
+  left: 1.8rem;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+}
+.game__choices > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.game__end {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 43rem;
+}
+.game__success {
+  font-size: 3rem;
+  align-self: center;
+}
+.game__success--success {
+  color: #00A84D;
+}
+.game__success--fail {
+  color: #d30000;
+}
+.game__score {
+  margin-top: 2rem;
+  font-size: 2.5rem;
+  align-self: center;
+}
+.game__score--success {
+  color: #00A84D;
+}
+.game__score--fail {
+  color: #d30000;
+}
+.game__infoQuiz {
+  font-size: 2rem;
+  margin-top: 3rem;
+  color: #000000;
+  font-weight: 600;
+}
+.game__infoQuiz > *:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
 a {
   text-decoration: none;
   color: #f9d9b8;

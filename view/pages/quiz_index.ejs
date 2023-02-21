@@ -10,14 +10,15 @@
           <div class="quiz__presentation--inversed">
             <% }%>
             <p><%= el.description%></p>
-            <p>aaa <%= el.category%> <%= el.test%>cccc</p>
           </div>
           <% if(index % 2 === 0) {%>
           <div class="quiz__img">
             <% }else {%>
             <div class="quiz__img--inversed">
               <% }%>
-              <img src="#" alt="<%=el.image%>" />
+              <a href="/quiz/<%=el.category%>">
+                <img src="#" alt="<%=el.image%>" />
+              </a>
             </div>
           </div>
         </div>

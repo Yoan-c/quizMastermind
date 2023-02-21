@@ -1,0 +1,28 @@
+<nav class="nav">
+  <div class="nav__menu">
+    <ul>
+      <li>
+        <a href="/" rel="noopener noreferrer">Accueil</a>
+      </li>
+      <% if (typeof data.isLoggued !== 'undefined' && data.isLoggued) { %> %>
+      <li>
+        <a href="#" rel="noopener noreferrer">Profil</a>
+      </li>
+      <li>
+        <a href="#" rel="noopener noreferrer">Quiz</a>
+      </li>
+      <li>
+        <a href="/logout" rel="noopener noreferrer">Déconnexion</a>
+      </li>
+      <% } else {%>
+      <li>
+        <a href="/login" rel="noopener noreferrer">Connexion</a>
+      </li>
+      <li>
+        <a href="/signup" rel="noopener noreferrer">Inscription</a>
+
+        <% }%>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -13,7 +13,7 @@ export const login = async (id, password) => {
     if (res.data.status === "success") {
       window.setTimeout(() => {
         location.assign("/");
-      }, 1500);
+      });
     }
     console.log(res);
   } catch (e) {
