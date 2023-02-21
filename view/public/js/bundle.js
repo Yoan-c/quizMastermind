@@ -11975,6 +11975,7 @@ var login = /*#__PURE__*/function () {
             url: "http://127.0.0.1:3000/api/users/login",
             data: {
               email: id,
+              pseudo: id,
               password: password
             }
           });

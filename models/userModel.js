@@ -83,7 +83,9 @@ userSchema.pre("save", async function (next) {
 userSchema.statics.loginUser = async function (email, pseudo, password) {
   let user = null;
   let result = null;
-  if (email) {
+
+  const regex =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  if (email.search(regex) >= 0 ) {
     user = await this.findOne({ email }).select("+password");
     if (user) result = await bcrypt.compare(password, user.password);
   } else {

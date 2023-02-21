@@ -53,7 +53,7 @@ exports.deleteUser = catchAsync(async (req, res) => {
 
 exports.login = catchAsync(async (req, res, next) => {
   const { pseudo, email, password } = req.body;
-  let user;
+
   if (!pseudo && !email)
     return next(new AppError("Entrez un email et/ou un pseudo", 400));
   if (!password)
