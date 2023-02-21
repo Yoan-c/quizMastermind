@@ -109,7 +109,16 @@ exports.getUserQuiz = catchAsync(async(req, res, next) => {
         data.image = el.image
     })
   })
-  console.log(tabQuiz);
   let namePage = checkConnection(req, "quiz");
   sendPage(req, res, { namePage , tabQuiz});
 })
+
+exports.getUserProfil = (req, res, next) => {
+  let namePage = checkConnection(req, "index");
+  const user = {
+    pseudo : req.user.pseudo,
+    email : req.user.email
+  }
+  console.log(user);
+  sendPage(req, res, { namePage , askProfil : true, user});
+}

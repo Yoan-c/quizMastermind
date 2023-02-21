@@ -8,8 +8,11 @@
     <div class="section__content">
       <% if(typeof data.askConnect !== 'undefined' && (data.askConnect ===
       'login' || data.askConnect === 'sign up')) { %> <%-include('./connect');%>
-      <%}%> <% if(typeof data.askConnect === 'undefined') {%>
-      <%-include('./quiz_index');%> <%}%>
+      <%} else if (typeof data.askProfil !== 'undefined') {%> 
+        <%-include('./profil');%> 
+      <% }else if(typeof data.askConnect === 'undefined') {%>
+      <%-include('./quiz_index');%> 
+      <%}%>
     </div>
   </section>
 </main>

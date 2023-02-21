@@ -36,6 +36,12 @@ body {
   font-size: 1.2rem;
   font-weight: 800;
 }
+.form__success {
+  color: #00A84D;
+  align-self: flex-start;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
 .form__field {
   display: flex;
   flex-direction: column;

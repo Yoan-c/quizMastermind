@@ -11955,7 +11955,7 @@ exports.Axios = Axios;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.login = void 0;
+exports.updateUser = exports.updatePassword = exports.login = void 0;
 var _axios = _interopRequireDefault(require("axios"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -11985,25 +11985,99 @@ var login = /*#__PURE__*/function () {
               location.assign("/");
             });
           }
-          console.log(res);
-          _context.next = 12;
+          _context.next = 11;
           break;
-        case 8:
-          _context.prev = 8;
+        case 7:
+          _context.prev = 7;
           _context.t0 = _context["catch"](0);
           divError = document.getElementById("formError");
           divError.innerHTML = "Error : ".concat(_context.t0.response.data.message);
-        case 12:
+        case 11:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee, null, [[0, 7]]);
   }));
   return function login(_x, _x2) {
     return _ref.apply(this, arguments);
   };
 }();
 exports.login = login;
+var updateUser = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(data) {
+    var res, divError;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.prev = 0;
+          _context2.next = 3;
+          return (0, _axios.default)({
+            method: "PATCH",
+            url: "http://127.0.0.1:3000/api/users/update",
+            data: data
+          });
+        case 3:
+          res = _context2.sent;
+          if (res.data.status === "success") {
+            document.getElementById("formSuccess").innerHTML = "Mis à jour effectué";
+          }
+          _context2.next = 12;
+          break;
+        case 7:
+          _context2.prev = 7;
+          _context2.t0 = _context2["catch"](0);
+          console.log(_context2.t0.response.data.message);
+          divError = document.getElementById("formError");
+          divError.innerHTML = "Error : ".concat(_context2.t0.response.data.message);
+        case 12:
+        case "end":
+          return _context2.stop();
+      }
+    }, _callee2, null, [[0, 7]]);
+  }));
+  return function updateUser(_x3) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+exports.updateUser = updateUser;
+var updatePassword = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(data) {
+    var res, divError;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.prev = 0;
+          _context3.next = 3;
+          return (0, _axios.default)({
+            method: "PATCH",
+            url: "http://127.0.0.1:3000/api/users/updatePassword",
+            data: data
+          });
+        case 3:
+          res = _context3.sent;
+          if (res.data.status === "success") {
+            document.getElementById("formSuccess").innerHTML = "Mot de passe modifié";
+          }
+          console.log(res);
+          _context3.next = 13;
+          break;
+        case 8:
+          _context3.prev = 8;
+          _context3.t0 = _context3["catch"](0);
+          console.log(_context3.t0.response.data.message);
+          divError = document.getElementById("formError");
+          divError.innerHTML = "Error : ".concat(_context3.t0.response.data.message);
+        case 13:
+        case "end":
+          return _context3.stop();
+      }
+    }, _callee3, null, [[0, 8]]);
+  }));
+  return function updatePassword(_x4) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+exports.updatePassword = updatePassword;
 },{"axios":"../../../node_modules/axios/index.js"}],"game.js":[function(require,module,exports) {
 "use strict";
 
@@ -12331,12 +12405,50 @@ var _login = require("./login");
 var _game = require("./game");
 var gameStart = document.getElementById("gameStart");
 var btnConnection = document.getElementById("btnConnection");
+var btnUpdate = document.getElementById("btnUpdate");
+var btnUpdatePassword = document.getElementById("btnUpdatePassword");
 if (btnConnection) {
   btnConnection.addEventListener("click", function (e) {
     e.preventDefault();
     var idConnect = document.getElementById("idConnect").value;
     var password = document.getElementById("password").value;
     (0, _login.login)(idConnect, password);
+  });
+}
+if (btnUpdate) {
+  btnUpdate.addEventListener("click", function (e) {
+    document.getElementById("formSuccess").innerHTML = "";
+    document.getElementById("formError").innerHTML = "";
+    e.preventDefault();
+    document.getElementById("formError").innerHTML = "";
+    var email = document.getElementById("Email").value;
+    var pseudo = document.getElementById("pseudo").value;
+    var data = {
+      email: email,
+      pseudo: pseudo
+    };
+    (0, _login.updateUser)(data);
+  });
+}
+if (btnUpdatePassword) {
+  btnUpdatePassword.addEventListener("click", function (e) {
+    document.getElementById("formSuccess").innerHTML = "";
+    document.getElementById("formError").innerHTML = "";
+    e.preventDefault();
+    document.getElementById("formError").innerHTML = "";
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    if (!password || password !== confirmPassword) {
+      document.getElementById("formError").innerHTML = "les mots de passe saisis ne sont pas identiques";
+    } else if (password.length < 6) {
+      document.getElementById("formError").innerHTML = "le mot de passe doit avoir plus de 5 caractères";
+    } else {
+      var data = {
+        password: password,
+        confirmPassword: confirmPassword
+      };
+      (0, _login.updatePassword)(data);
+    }
   });
 }
 if (gameStart) {

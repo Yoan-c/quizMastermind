@@ -1,0 +1,60 @@
+<div class="form">
+<div class="form__login">
+    <div class="form__error" id="formError"></div>
+    <div class="form__success" id="formSuccess"></div>
+    <form action="#" method="post">
+      <div class="form__field">
+        <label for="pseudo" class="form__label">Pseudo :</label>
+        <input
+          type="text"
+          name="pseudo"
+          id="pseudo"
+          placeholder="Pseudo"
+          value="<%= data.user.pseudo%>"
+        />
+      </div>
+      <div class="form__field">
+        <label for="Email" class="form__label">Email :</label>
+        <input
+          type="email"
+          name="Email"
+          id="Email"
+          placeholder="Email"
+          value="<%= data.user.email%>"
+        />
+      </div>
+      <div class="form__field">
+        <button type="submit" class="btn form__login" id="btnUpdate">
+          Mettre à jour
+        </button>
+      </div>
+      <div class="form__field">
+        <label for="password" class="form__label">Mot de passe :</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="********"
+          minlength=6
+          required
+        />
+      </div>
+      <div class="form__field">
+        <label for="confirmPassword" class="form__label">Confirmation mot de passe :</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          id="confirmPassword"
+          placeholder="********"
+          minlength=6
+          required
+        />
+      </div>
+      <div class="form__field">
+        <button type="submit" class="btn form__login" id="btnUpdatePassword">
+          Mettre à jour le mot de passe
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

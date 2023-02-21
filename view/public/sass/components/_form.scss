@@ -12,6 +12,13 @@
         font-weight: 800;
     }
 
+    &__success {
+        color: $color-success;
+        align-self: flex-start;
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+
     &__field {
         display: flex;
         flex-direction: column;

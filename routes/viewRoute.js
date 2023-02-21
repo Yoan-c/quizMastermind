@@ -18,6 +18,7 @@ router
   .route("/quiz/:category")
   .get(viewController.startQuiz);
 
-router.route('/quiz').get(viewController.getUserQuiz)
-
+  router.route('/quiz').get(viewController.getUserQuiz)
+  router.route('/profil').get(viewController.getUserProfil)
+  
 module.exports = router;
