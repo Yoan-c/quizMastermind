@@ -55,6 +55,7 @@ exports.loggued = async (req, res, next) => {
       const user = await User.findById(decoded.id);
       if (!user) return next();
       req.isLoggued = true;
+      req.user = user;
     }
     next();
   } catch (err) {
@@ -83,3 +84,32 @@ exports.startQuiz = (req, res, next) => {
   if (!category) namePage = checkConnection(req, "index");
   sendPage(req, res, { namePage, start: true, category });
 };
+
+exports.getUserQuiz = catchAsync(async(req, res, next) => {
+  console.log(req.user);
+  let tabQuiz = [];
+
+  const quizInfo = await QuizInfo.find();
+  const quizUser = req.user.quiz;
+
+  quizUser.forEach(el => {
+    if (el.isFinish){
+      const data = {
+        nbQuestions : el.nbQuestions,
+        score : el.score,
+        category : el.category,
+        image : ""
+      }
+      tabQuiz.push(data)
+    }
+  });
+  quizInfo.forEach(el => {
+    tabQuiz.forEach(data => {
+      if (el.category == data.category)
+        data.image = el.image
+    })
+  })
+  console.log(tabQuiz);
+  let namePage = checkConnection(req, "quiz");
+  sendPage(req, res, { namePage , tabQuiz});
+})

@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema({
     {
       category: String,
       nbQuestions: Number,
+      isFinish : {
+        type: Boolean,
+        default: false,
+      },
       numQuestion: {
         type : Number,
         default : 0

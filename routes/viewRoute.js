@@ -12,8 +12,12 @@ router
 router.route("/logout").get(viewController.logout);
 router.route("/signup").get(viewController.getFormSignUp);
 
+router.use(viewController.loggued)
+
 router
   .route("/quiz/:category")
-  .get(viewController.loggued, viewController.startQuiz);
+  .get(viewController.startQuiz);
+
+router.route('/quiz').get(viewController.getUserQuiz)
 
 module.exports = router;

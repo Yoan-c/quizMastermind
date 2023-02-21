@@ -1,0 +1,44 @@
+.quizInfo {
+    color : $color-black;
+    &__title {
+        text-align: center;
+        color : $color-primary;
+        font-size: 2.4rem;
+        font-weight: 600;
+    }
+    &__description {
+        display: flex;
+        margin-top: 5rem;
+    }
+    &__category {
+        margin-right: 2rem;
+        color : $color-primary;
+        font-size: 2rem;
+        min-width: 25rem;
+
+    }
+    &__status {
+
+        font-size: 1.8rem;
+        font-weight: 600;
+        min-width: 25rem;
+
+        &--success {
+            color: $color-success;
+        }
+        &--fail {
+            color: $color-fail;
+        }
+    }
+    &__result {
+        font-size: 1.8rem;
+        font-weight: 600;
+        &--success {
+            color: $color-success;
+        }
+        &--fail {
+            color: $color-fail;
+        }
+    }
+
+}

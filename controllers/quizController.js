@@ -48,7 +48,7 @@ exports.answerQuestion = catchAsync(async (req, res, next) => {
         return next(new AppError('quiz not found', 404))
 
     const userQuiz = req.user.quiz.filter(el => el.category === category)
-    console.log(userQuiz)
+
     const index = userQuiz[0].idQuestion.findIndex(el => el === id)
     if (index === -1) {
         return next(new AppError('Erreur, aucune question ne correspond à votre requete', 400))
@@ -67,13 +67,15 @@ exports.answerQuestion = catchAsync(async (req, res, next) => {
         success : iscorrect,
         isAnswer : true
     }
-    await User.findByIdAndUpdate(req.user._id, req.user)
     if (userQuiz[0].idQuestion[index +1]){
         idQUestion = userQuiz[0].idQuestion[index +1]
         nextQuestion= `${req.protocol}://${req.headers.host}/api/quiz/${category}/${idQUestion}`
     }
-    else
-        nextQuestion = "finish"
+    else{
+        nextQuestion = "finish";
+        userQuiz[0].isFinish = true;
+    }
+    await User.findByIdAndUpdate(req.user._id, req.user)
     
     res.status(200).json({
         success: "success",

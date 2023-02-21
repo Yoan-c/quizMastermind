@@ -6,6 +6,7 @@
   <%- include('./nav'); %>
   <section class="section">
     <div class="section__content">
+      <% if(typeof data.tabQuiz === 'undefined') {%>
       <div class="game" id="game">
         <div class="game__header" id="game__header">
           <div class="game__title">
@@ -19,6 +20,9 @@
         </div>
         <%}%>
       </div>
+      <%} else {%>
+        <%- include('./quizInfo'); %>
+        <%}%>
     </div>
   </section>
 </main>

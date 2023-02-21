@@ -1,0 +1,31 @@
+<div class="quizInfo">
+    <div class="quizInfo__title">
+        Quiz
+    </div>
+    <div class="quizInfo__section">
+        <% data.tabQuiz.forEach(quiz => {
+            %>
+            <div class="quizInfo__description">
+                <div class="quizInfo__category">
+                    <p> Quiz <%= quiz.category%></p>
+                </div>
+                <% if (quiz.score >= (quiz.nbQuestions/2)) {%>
+                <div class="quizInfo__status quizInfo__status--success">
+                    <p>Réussite</p>
+                </div>
+                <div class="quizInfo__result quizInfo__result--success">
+                    <%= Math.round((quiz.score / quiz.nbQuestions) * 100)%>%
+                </div>
+                <%}else {%>
+                    <div class="quizInfo__status quizInfo__status--fail">
+                        <p>Raté</p>
+                    </div>
+                    <div class="quizInfo__result quizInfo__result--fail">
+                        <%=Math.round((((quiz.nbQuestions-quiz.score) / quiz.nbQuestions) * 100))%>%
+                    </div>
+                <%}%>
+                
+            </div>
+        <%})%>
+    </div>
+</div>

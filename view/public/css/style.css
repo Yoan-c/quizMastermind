@@ -224,6 +224,47 @@ a {
   margin-bottom: 5rem;
 }
 
+.quizInfo {
+  color: #000000;
+}
+.quizInfo__title {
+  text-align: center;
+  color: #930202;
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+.quizInfo__description {
+  display: flex;
+  margin-top: 5rem;
+}
+.quizInfo__category {
+  margin-right: 2rem;
+  color: #930202;
+  font-size: 2rem;
+  min-width: 25rem;
+}
+.quizInfo__status {
+  font-size: 1.8rem;
+  font-weight: 600;
+  min-width: 25rem;
+}
+.quizInfo__status--success {
+  color: #00A84D;
+}
+.quizInfo__status--fail {
+  color: #d30000;
+}
+.quizInfo__result {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.quizInfo__result--success {
+  color: #00A84D;
+}
+.quizInfo__result--fail {
+  color: #d30000;
+}
+
 .section {
   background-color: white;
   min-width: 80%;
