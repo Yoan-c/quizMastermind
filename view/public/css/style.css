@@ -229,6 +229,12 @@ a {
   flex-direction: column;
   margin-bottom: 5rem;
 }
+.quiz__image {
+  max-width: 20rem;
+}
+.quiz__doQuiz {
+  color: #930202;
+}
 
 .quizInfo {
   color: #000000;
@@ -269,6 +275,9 @@ a {
 }
 .quizInfo__result--fail {
   color: #d30000;
+}
+.quizInfo__noResult {
+  margin-top: 5rem;
 }
 
 .section {

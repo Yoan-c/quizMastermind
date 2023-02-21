@@ -40,5 +40,12 @@
         margin-bottom: 5rem;
     }
 
+    &__image {
+        max-width: 20rem;
+    }
+
+    &__doQuiz{
+        color: $color-primary;
+    }
 
 }

@@ -3,6 +3,15 @@
         Quiz
     </div>
     <div class="quizInfo__section">
+        <% if(data.tabQuiz.length === 0 ) { %>
+            <div class="quizInfo__noResult">
+                <p>
+                    Il n'y a pas encore de quiz enregistré pour le moment, mais vous pouvez vous rendre  sur l'onglet "Accueil" 
+                    et choisissez le quiz que vous souhaitez réaliser.
+
+                </p>
+            </div>    
+        <%}%>
         <% data.tabQuiz.forEach(quiz => {
             %>
             <div class="quizInfo__description">
