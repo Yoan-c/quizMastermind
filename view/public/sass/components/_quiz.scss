@@ -13,6 +13,14 @@
             flex-direction: row-reverse;
             justify-content: space-between;
             margin-bottom: 5rem;
+
+            @media only screen and (max-width: $bp-small) {
+                flex-direction: column;
+            }
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            flex-direction: column;
         }
     }
 
@@ -31,6 +39,17 @@
 
         &--inversed {
             width: 50%;
+            @media only screen and (max-width: $bp-small) {
+                width: 100%;
+                margin: 0;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            width : 100%;
+            margin : 0;
+            margin-bottom: 2rem;
         }
     }
 

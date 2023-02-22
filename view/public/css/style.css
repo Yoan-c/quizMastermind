@@ -1,3 +1,27 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-10rem);
+    visibility: hidden;
+  }
+}
 *,
 *::after,
 *::before {
@@ -9,11 +33,38 @@
 html {
   font-size: 62.5%;
 }
+@media only screen and (max-width: 72.5em) {
+  html {
+    font-size: 50%;
+  }
+}
 
 body {
   box-sizing: border-box;
-  max-width: 114rem;
   margin: 0 auto;
+  display: grid;
+  grid-template-rows: 20vh min-content 8vw;
+  grid-template-columns: minmax(10rem, 14rem) 14rem minmax(80rem, 1fr) 28rem;
+  grid-template-areas: ". header header ." ". nav main ." ". footer footer .";
+}
+@media only screen and (max-width: 58.7em) {
+  body {
+    max-width: 100%;
+    grid-template-columns: minmax(8rem, 14rem) minmax(80rem, 1fr) minmax(8rem, 16rem);
+    grid-template-areas: ". header ." " nav main ." "footer footer .";
+  }
+}
+@media only screen and (max-width: 50em) {
+  body {
+    grid-template-columns: minmax(8rem, 14rem) minmax(65rem, 1fr) minmax(8rem, 16rem);
+    grid-template-areas: "header header header" " main main main" "footer footer footer";
+  }
+}
+@media only screen and (max-width: 40.6em) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "main" "footer";
+  }
 }
 
 body {
@@ -194,6 +245,52 @@ a {
   color: #f9d9b8;
 }
 
+.menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 3.2rem;
+  width: 3.2rem;
+  cursor: pointer;
+}
+.menu__section {
+  display: inline-block;
+  border-bottom: 3px solid #f9d9b8;
+  border-radius: 6px;
+  width: 3rem;
+  position: relative;
+  cursor: pointer;
+}
+.menu__section::before {
+  content: "";
+  display: inline-block;
+  border-bottom: 3px solid #f9d9b8;
+  border-radius: 6px;
+  width: 3rem;
+  position: absolute;
+  top: -8px;
+  cursor: pointer;
+}
+.menu__section::after {
+  content: "";
+  display: inline-block;
+  border-bottom: 3px solid #f9d9b8;
+  border-radius: 6px;
+  width: 3rem;
+  position: absolute;
+  top: 8px;
+  cursor: pointer;
+}
+
+#menu__section {
+  display: none;
+}
+@media only screen and (max-width: 50em) {
+  #menu__section {
+    display: block;
+  }
+}
+
 .quiz {
   display: flex;
   flex-direction: column;
@@ -209,6 +306,16 @@ a {
   justify-content: space-between;
   margin-bottom: 5rem;
 }
+@media only screen and (max-width: 40.6em) {
+  .quiz__info--inversed {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 40.6em) {
+  .quiz__info {
+    flex-direction: column;
+  }
+}
 .quiz__category {
   align-self: center;
   color: #930202;
@@ -223,6 +330,20 @@ a {
 }
 .quiz__presentation--inversed {
   width: 50%;
+}
+@media only screen and (max-width: 40.6em) {
+  .quiz__presentation--inversed {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+}
+@media only screen and (max-width: 40.6em) {
+  .quiz__presentation {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
 }
 .quiz--inversed {
   display: flex;
@@ -286,11 +407,17 @@ a {
   border-radius: 2rem;
   color: #777;
   position: relative;
+  min-height: 60rem;
 }
 .section__content {
   max-width: 80%;
   margin: 0 auto;
   padding: 2rem;
+}
+@media only screen and (max-width: 50em) {
+  .section {
+    border-radius: 0;
+  }
 }
 
 .btn {
@@ -303,8 +430,12 @@ a {
   cursor: pointer;
 }
 
+footer {
+  grid-area: footer;
+}
+
 .header {
-  height: 15rem;
+  grid-area: header;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -318,12 +449,22 @@ a {
 .header__title:hover {
   transform: scale(1.1) translateY(-0.3rem);
 }
+@media only screen and (max-width: 58.7em) {
+  .header__title {
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 40.6em) {
+  .header__title {
+    font-size: 1.6rem;
+  }
+}
 
 .nav {
+  grid-area: nav;
   padding: 2rem;
   display: flex;
   justify-content: center;
-  margin-right: 5rem;
 }
 .nav__menu ul {
   list-style: none;
@@ -343,13 +484,22 @@ a {
 .nav__menu ul li:hover {
   transform: scale(1.1);
 }
+@media only screen and (max-width: 50em) {
+  .nav {
+    position: fixed;
+    top: 18rem;
+    z-index: 20;
+    background-color: #930202;
+    width: 25rem;
+    height: 20rem;
+    visibility: hidden;
+    display: block;
+  }
+}
 
 .main {
+  grid-area: main;
   background-color: #930202;
-  display: flex;
-  justify-content: flex-start;
-  margin: 0 auto;
-  margin-left: 5rem;
   min-height: 70vh;
 }
 

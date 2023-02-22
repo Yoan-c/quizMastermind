@@ -1,12 +1,15 @@
 import "@babel/polyfill";
 import { login, updateUser, updatePassword, signup } from "./login";
 import { startGame } from "./game";
+import { showMenu } from "./menu";
 
 let gameStart = document.getElementById("gameStart");
 let btnConnection = document.getElementById("btnConnection");
 let btnInscription = document.getElementById("btnInscription");
 let btnUpdate = document.getElementById("btnUpdate");
 let btnUpdatePassword = document.getElementById("btnUpdatePassword");
+let menuSection = document.getElementById("menu__section");
+let menuNav = document.getElementById("menu__nav");
 
 if (btnConnection) {
   btnConnection.addEventListener("click", (e) => {
@@ -71,5 +74,10 @@ if (gameStart) {
   gameStart.addEventListener("click", () => {
     const category = document.getElementById("category").textContent;
     startGame(category);
+  });
+}
+if (menuSection) {
+  menuSection.addEventListener("click", () => {
+    showMenu();
   });
 }

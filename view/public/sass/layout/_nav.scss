@@ -1,8 +1,8 @@
 .nav {
+    grid-area: nav;
     padding: 2rem;
     display: flex;
     justify-content: center;
-    margin-right: 5rem;
 
     &__menu {
 
@@ -27,5 +27,15 @@
                 }
             }
         }
+    }
+    @media only screen and (max-width: $bp-medium) {
+        position: fixed;
+        top : 18rem;
+        z-index : 20;
+        background-color: $color-primary;
+        width: 25rem;
+        height: 20rem;
+        visibility: hidden;
+        display: block;
     }
 }

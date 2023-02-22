@@ -1,8 +1,5 @@
 .main {
+    grid-area: main;
     background-color: $color-primary;
-    display: flex;
-    justify-content: flex-start;
-    margin: 0 auto;
-    margin-left: 5rem;
     min-height: 70vh;
 }

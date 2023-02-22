@@ -1,10 +1,14 @@
 <%- include('./header'); %>
 <header class="header">
+  <div class="menu" id="menu__section">
+    <label  class="menu__section" ></label>
+  </div>
   <div class="header__title"><h1>QuizMastemind</h1></div>
 </header>
+<%- include('./nav'); %>
 <main class="main">
-  <%- include('./nav'); %>
   <section class="section">
+    
     <div class="section__content">
       <% if(typeof data.askConnect !== 'undefined' && (data.askConnect ===
       'login' || data.askConnect === 'sign up')) { %> <%-include('./connect');%>

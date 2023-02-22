@@ -1,5 +1,5 @@
 .header  {
-    height: 15rem;
+    grid-area: header;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,6 +10,13 @@
         transition: all .2s;
         &:hover {
             transform: scale(1.1) translateY(-.3rem);
+        }
+
+        @media only screen and (max-width: $bp-largeMedium) {
+            margin: 0;
+        }
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.6rem;
         }
     }
 }
