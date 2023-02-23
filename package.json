@@ -6,9 +6,14 @@
   "scripts": {
     "start": "SET NODE_ENV=development&& nodemon server.js",
     "start:prod": "nodemon server.js",
-    "sass": "sass view/public/sass/index.scss view/public/css/style.css -w",
+    "compile:sass": "node-sass view/public/sass/index.scss view/public/css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' view/public/css/style.comp.css -o view/public/css/style.prefix.css",
+    "compress:css": "node-sass view/public/css/style.prefix.css view/public/css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css",
     "watch:js": "parcel watch ./view/public/js/index.js --out-dir ./view/public/js --out-file bundle.js --public-url /js",
-    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js --public-url /js"
+    "build:js": "parcel build ./view/public/js/index.js --out-dir ./view/public/js --out-file bundle.js --public-url /js",
+    "build" : "npm-run-all build:css build:js"
+    
   },
   "repository": {
     "type": "git",
@@ -22,6 +27,7 @@
   "homepage": "https://github.com/ti-metiss/quizMastermind#readme",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "autoprefixer": "^10.4.13",
     "axios": "^1.3.3",
     "bcrypt": "^5.1.0",
     "compression": "^1.7.4",
@@ -36,11 +42,14 @@
     "jsonwebtoken": "^9.0.0",
     "login.js": "^1.2.0",
     "mongoose": "^6.9.1",
+    "node-sass": "^8.0.0",
     "path": "^0.12.7",
+    "postcss-cli": "^10.1.0",
     "serve-favicon": "^2.5.0",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
+    "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.5"
   },
   "engines": {
