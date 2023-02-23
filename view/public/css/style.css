@@ -43,7 +43,7 @@ body {
   box-sizing: border-box;
   margin: 0 auto;
   display: grid;
-  grid-template-rows: 20vh min-content 8vw;
+  grid-template-rows: 20vh min-content 8vh;
   grid-template-columns: minmax(10rem, 14rem) 14rem minmax(80rem, 1fr) 28rem;
   grid-template-areas: ". header header ." ". nav main ." ". footer footer .";
 }
@@ -369,12 +369,25 @@ a {
 .quizInfo__description {
   display: flex;
   margin-top: 5rem;
+  justify-content: center;
+}
+@media only screen and (max-width: 40.6em) {
+  .quizInfo__description {
+    display: block;
+    text-align: center;
+  }
 }
 .quizInfo__category {
   margin-right: 2rem;
   color: #930202;
   font-size: 2rem;
   min-width: 25rem;
+}
+@media only screen and (max-width: 40.6em) {
+  .quizInfo__category {
+    margin: 0;
+    min-width: auto;
+  }
 }
 .quizInfo__status {
   font-size: 1.8rem;
@@ -387,6 +400,13 @@ a {
 .quizInfo__status--fail {
   color: #d30000;
 }
+@media only screen and (max-width: 40.6em) {
+  .quizInfo__status {
+    padding: 1.3rem;
+    display: inline-block;
+    min-width: auto;
+  }
+}
 .quizInfo__result {
   font-size: 1.8rem;
   font-weight: 600;
@@ -396,6 +416,12 @@ a {
 }
 .quizInfo__result--fail {
   color: #d30000;
+}
+@media only screen and (max-width: 40.6em) {
+  .quizInfo__result {
+    padding: 0.2rem;
+    display: inline-block;
+  }
 }
 .quizInfo__noResult {
   margin-top: 5rem;
@@ -432,6 +458,8 @@ a {
 
 footer {
   grid-area: footer;
+  text-align: center;
+  padding: 1.3rem;
 }
 
 .header {
@@ -487,7 +515,7 @@ footer {
 @media only screen and (max-width: 50em) {
   .nav {
     position: fixed;
-    top: 18rem;
+    top: 19%;
     z-index: 20;
     background-color: #930202;
     width: 25rem;
@@ -500,7 +528,6 @@ footer {
 .main {
   grid-area: main;
   background-color: #930202;
-  min-height: 70vh;
 }
 
 /*# sourceMappingURL=style.css.map */

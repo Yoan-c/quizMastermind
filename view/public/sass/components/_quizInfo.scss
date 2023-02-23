@@ -9,12 +9,22 @@
     &__description {
         display: flex;
         margin-top: 5rem;
+        justify-content: center;
+        @media only screen and (max-width: $bp-small) {
+            display: block;
+            text-align: center;
+        }
     }
     &__category {
         margin-right: 2rem;
         color : $color-primary;
         font-size: 2rem;
         min-width: 25rem;
+
+        @media only screen and (max-width: $bp-small) {
+            margin: 0;
+            min-width: auto;
+        }
 
     }
     &__status {
@@ -29,6 +39,12 @@
         &--fail {
             color: $color-fail;
         }
+
+        @media only screen and (max-width: $bp-small) {
+            padding: 1.3rem;
+            display: inline-block;
+            min-width: auto;
+        }
     }
     &__result {
         font-size: 1.8rem;
@@ -38,6 +54,11 @@
         }
         &--fail {
             color: $color-fail;
+        }
+        @media only screen and (max-width: $bp-small) {
+            padding: .2rem;
+            display: inline-block;
+            
         }
     }
 

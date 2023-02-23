@@ -7,7 +7,7 @@
             <div class="quizInfo__noResult">
                 <p>
                     Il n'y a pas encore de quiz enregistré pour le moment, mais vous pouvez vous rendre  sur l'onglet "Accueil" 
-                    et choisissez le quiz que vous souhaitez réaliser.
+                    git et choisissez le quiz que vous souhaitez réaliser.
 
                 </p>
             </div>    
@@ -20,7 +20,7 @@
                 </div>
                 <% if (quiz.score >= (quiz.nbQuestions/2)) {%>
                 <div class="quizInfo__status quizInfo__status--success">
-                    <p>Réussite</p>
+                    <p>Réussi</p>
                 </div>
                 <div class="quizInfo__result quizInfo__result--success">
                     <%= Math.round((quiz.score / quiz.nbQuestions) * 100)%>%
