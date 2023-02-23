@@ -43,13 +43,13 @@ const userSchema = new mongoose.Schema({
     {
       category: String,
       nbQuestions: Number,
-      isFinish : {
+      isFinish: {
         type: Boolean,
         default: false,
       },
       numQuestion: {
-        type : Number,
-        default : 0
+        type: Number,
+        default: 0,
       },
       score: {
         type: Number,
@@ -84,8 +84,8 @@ userSchema.statics.loginUser = async function (email, pseudo, password) {
   let user = null;
   let result = null;
 
-  const regex =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-  if (email.search(regex) >= 0 ) {
+  const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (email.search(regex) >= 0) {
     user = await this.findOne({ email }).select("+password");
     if (user) result = await bcrypt.compare(password, user.password);
   } else {

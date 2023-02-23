@@ -39,6 +39,7 @@
 
         &--inversed {
             width: 50%;
+
             @media only screen and (max-width: $bp-small) {
                 width: 100%;
                 margin: 0;
@@ -47,8 +48,8 @@
         }
 
         @media only screen and (max-width: $bp-small) {
-            width : 100%;
-            margin : 0;
+            width: 100%;
+            margin: 0;
             margin-bottom: 2rem;
         }
     }
@@ -63,7 +64,7 @@
         max-width: 20rem;
     }
 
-    &__doQuiz{
+    &__doQuiz {
         color: $color-primary;
     }
 

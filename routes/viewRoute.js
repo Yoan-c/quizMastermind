@@ -12,13 +12,11 @@ router
 router.route("/logout").get(viewController.logout);
 router.route("/signup").get(viewController.getFormSignUp);
 
-router.use(viewController.loggued)
+router.use(viewController.loggued);
 
-router
-  .route("/quiz/:category")
-  .get(viewController.startQuiz);
+router.route("/quiz/:category").get(viewController.startQuiz);
 
-  router.route('/quiz').get(viewController.getUserQuiz)
-  router.route('/profil').get(viewController.getUserProfil)
-  
+router.route("/quiz").get(viewController.getUserQuiz);
+router.route("/profil").get(viewController.getUserProfil);
+
 module.exports = router;

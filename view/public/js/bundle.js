@@ -12025,6 +12025,7 @@ var signup = /*#__PURE__*/function () {
         case 3:
           res = _context2.sent;
           if (res.data.status === "success") {
+            document.getElementById("formError").innerHTML = "";
             document.getElementById("formSuccess").innerHTML = "Utilisateur crée vous allez etre redirigé pour vous connecter / ou connectez vous ";
             window.setTimeout(function () {
               location.assign("/login");
@@ -12300,13 +12301,13 @@ var showResponse = function showResponse(choices, el, data) {
   var userAnswerId = el.target.id.replace("choice", "radio");
   var isCorrect = data.response;
   if (isCorrect) {
-    document.getElementById(userAnswerId).classList.add('game__radio--success');
+    document.getElementById(userAnswerId).classList.add("game__radio--success");
   } else {
-    document.getElementById(userAnswerId).classList.add('game__radio--fail');
+    document.getElementById(userAnswerId).classList.add("game__radio--fail");
     choices.forEach(function (choice) {
       if (choice.value === correctAnswer) {
         var id = choice.id.replace("choice", "radio");
-        document.getElementById(id).classList.add('game__radio--success');
+        document.getElementById(id).classList.add("game__radio--success");
       }
     });
   }
@@ -12319,13 +12320,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.showMenu = void 0;
 var showMenu = function showMenu() {
-  var showAnimation = 'moveInLeft 1s ease-out forwards';
-  var hideAnimation = 'moveInRight 1s ease-out forwards';
-  var nav = document.getElementById('nav');
+  var showAnimation = "moveInLeft 1s ease-out forwards";
+  var hideAnimation = "moveInRight 1s ease-out forwards";
+  var nav = document.getElementById("nav");
   if (!nav.style.animation) {
     nav.style.animation = showAnimation;
   } else {
-    if (nav.style.animation.search('moveInRight') >= 0) nav.style.animation = showAnimation;else nav.style.animation = hideAnimation;
+    if (nav.style.animation.search("moveInRight") >= 0) nav.style.animation = showAnimation;else nav.style.animation = hideAnimation;
   }
 };
 exports.showMenu = showMenu;

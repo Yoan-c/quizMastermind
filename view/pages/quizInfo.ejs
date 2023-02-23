@@ -1,39 +1,35 @@
 <div class="quizInfo">
-    <div class="quizInfo__title">
-        Quiz
+  <div class="quizInfo__title">Quiz</div>
+  <div class="quizInfo__section">
+    <% if(data.tabQuiz.length === 0 ) { %>
+    <div class="quizInfo__noResult">
+      <p>
+        Il n'y a pas encore de quiz enregistré pour le moment, mais vous pouvez
+        vous rendre sur l'onglet "Accueil" et choisissez le quiz que vous
+        souhaitez réaliser.
+      </p>
     </div>
-    <div class="quizInfo__section">
-        <% if(data.tabQuiz.length === 0 ) { %>
-            <div class="quizInfo__noResult">
-                <p>
-                    Il n'y a pas encore de quiz enregistré pour le moment, mais vous pouvez vous rendre  sur l'onglet "Accueil" 
-                    git et choisissez le quiz que vous souhaitez réaliser.
-
-                </p>
-            </div>    
-        <%}%>
-        <% data.tabQuiz.forEach(quiz => {
-            %>
-            <div class="quizInfo__description">
-                <div class="quizInfo__category">
-                    <p> Quiz <%= quiz.category%></p>
-                </div>
-                <% if (quiz.score >= (quiz.nbQuestions/2)) {%>
-                <div class="quizInfo__status quizInfo__status--success">
-                    <p>Réussi</p>
-                </div>
-                <div class="quizInfo__result quizInfo__result--success">
-                    <%= Math.round((quiz.score / quiz.nbQuestions) * 100)%>%
-                </div>
-                <%}else {%>
-                    <div class="quizInfo__status quizInfo__status--fail">
-                        <p>Raté</p>
-                    </div>
-                    <div class="quizInfo__result quizInfo__result--fail">
-                        <%=Math.round((((quiz.nbQuestions-quiz.score) / quiz.nbQuestions) * 100))%>%
-                    </div>
-                <%}%>
-            </div>
-        <%})%>
+    <%}%> <% data.tabQuiz.forEach(quiz => { %>
+    <div class="quizInfo__description">
+      <div class="quizInfo__category">
+        <p>Quiz <%= quiz.category%></p>
+      </div>
+      <% if (quiz.score >= (quiz.nbQuestions/2)) {%>
+      <div class="quizInfo__status quizInfo__status--success">
+        <p>Réussi</p>
+      </div>
+      <div class="quizInfo__result quizInfo__result--success">
+        <%= Math.round((quiz.score / quiz.nbQuestions) * 100)%>%
+      </div>
+      <%}else {%>
+      <div class="quizInfo__status quizInfo__status--fail">
+        <p>Raté</p>
+      </div>
+      <div class="quizInfo__result quizInfo__result--fail">
+        <%= Math.round((quiz.score / quiz.nbQuestions) * 100)%>%
+      </div>
+      <%}%>
     </div>
+    <%})%>
+  </div>
 </div>

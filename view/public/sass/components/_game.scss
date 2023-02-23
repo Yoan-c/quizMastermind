@@ -55,22 +55,24 @@
         &:hover {
             background-color: $color-grey-dark ;
         }
+
         &--success {
-            background-color : $color-success;
+            background-color: $color-success;
             color: $color-secondary;
-    
-            &:hover{
-                background-color : $color-success;
+
+            &:hover {
+                background-color: $color-success;
                 color: $color-secondary;
             }
-    
+
         }
+
         &--fail {
-            background-color : $color-fail;
+            background-color: $color-fail;
             color: $color-secondary;
-    
-            &:hover{
-                background-color : $color-fail;
+
+            &:hover {
+                background-color: $color-fail;
                 color: $color-secondary;
             }
         }
@@ -106,12 +108,14 @@
         font-size: 3rem;
         align-self: center;
     }
+
     &__success--success {
-        color : $color-success;
+        color: $color-success;
 
     }
+
     &__success--fail {
-        color : $color-fail;
+        color: $color-fail;
     }
 
     &__score {
@@ -119,20 +123,22 @@
         font-size: 2.5rem;
         align-self: center;
     }
+
     &__score--success {
-        color : $color-success;
-    }
-    &__score--fail {
-        color : $color-fail;
+        color: $color-success;
     }
 
-    &__infoQuiz{
+    &__score--fail {
+        color: $color-fail;
+    }
+
+    &__infoQuiz {
         font-size: 2rem;
         margin-top: 3rem;
-        color : $color-black;
+        color: $color-black;
         font-weight: 600;
 
-        &>*:not(:last-child){
+        &>*:not(:last-child) {
             margin-bottom: 2rem;
         }
 

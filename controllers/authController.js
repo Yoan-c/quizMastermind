@@ -83,11 +83,10 @@ exports.logout = catchAsync(async (req, res, next) => {
 });
 
 exports.proctect = catchAsync(async (req, res, next) => {
-  
   if (req.cookies && req.cookies.jwt) {
     const id = decodedToken(req.cookies.jwt);
     const user = await User.findById(id);
-    
+
     if (user) {
       req.user = user;
       return next();

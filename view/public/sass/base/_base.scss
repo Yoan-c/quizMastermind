@@ -1,13 +1,14 @@
 *,
 *::after,
 *::before {
-    margin : 0;
-    padding : 0;
-    box-sizing : inherit;
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
 html {
     font-size: 62.5%;
+
     @media only screen and (max-width: $bp-largest) {
         font-size: 50%; // 8px
     }
@@ -16,38 +17,37 @@ html {
 body {
     box-sizing: border-box;
     margin: 0 auto;
-    display : grid;
+    display: grid;
     grid-template-rows: 20vh min-content 8vh;
-    grid-template-columns: minmax(10rem, 14rem) 14rem minmax(80rem, 1fr)  28rem;
-    grid-template-areas: 
-    ". header header ."
-    ". nav main ."
-    ". footer footer .";
+    grid-template-columns: minmax(10rem, 14rem) 14rem minmax(80rem, 1fr) 28rem;
+    grid-template-areas:
+        ". header header ."
+        ". nav main ."
+        ". footer footer .";
 
 
     @media only screen and (max-width: $bp-largeMedium) {
         max-width: 100%;
         grid-template-columns: minmax(8rem, 14rem) minmax(80rem, 1fr) minmax(8rem, 16rem);
-        grid-template-areas: 
-        ". header ."
-        " nav main ."
-        "footer footer .";
+        grid-template-areas:
+            ". header ."
+            " nav main ."
+            "footer footer .";
     }
+
     @media only screen and (max-width: $bp-medium) {
         grid-template-columns: minmax(8rem, 14rem) minmax(65rem, 1fr) minmax(8rem, 16rem);
-        grid-template-areas: 
-        "header header header"
-        " main main main"
-        "footer footer footer";
+        grid-template-areas:
+            "header header header"
+            " main main main"
+            "footer footer footer";
     }
 
     @media only screen and (max-width: $bp-small) {
         grid-template-columns: 1fr;
-        grid-template-areas: 
-        "header"
-        "main"
-        "footer";
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
     }
 }
-
-

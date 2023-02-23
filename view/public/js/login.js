@@ -7,7 +7,7 @@ export const login = async (id, password) => {
       url: "http://127.0.0.1:3000/api/users/login",
       data: {
         email: id,
-        pseudo : id,
+        pseudo: id,
         password,
       },
     });
@@ -30,11 +30,13 @@ export const signup = async (pseudo, email, password, confirmPassword) => {
         email,
         pseudo,
         password,
-        confirmPassword
+        confirmPassword,
       },
     });
     if (res.data.status === "success") {
-      document.getElementById("formSuccess").innerHTML="Utilisateur crée vous allez etre redirigé pour vous connecter / ou connectez vous ";
+      document.getElementById("formError").innerHTML = "";
+      document.getElementById("formSuccess").innerHTML =
+        "Utilisateur crée vous allez etre redirigé pour vous connecter / ou connectez vous ";
       window.setTimeout(() => {
         location.assign("/login");
       }, 5000);
@@ -45,37 +47,36 @@ export const signup = async (pseudo, email, password, confirmPassword) => {
   }
 };
 
-export const updateUser = async(data) => {
-
+export const updateUser = async (data) => {
   try {
     const res = await axios({
       method: "PATCH",
       url: "http://127.0.0.1:3000/api/users/update",
-      data
+      data,
     });
     if (res.data.status === "success") {
-      document.getElementById("formSuccess").innerHTML="Mis à jour effectué";
+      document.getElementById("formSuccess").innerHTML = "Mis à jour effectué";
     }
   } catch (e) {
-    console.log(e.response.data.message)
+    console.log(e.response.data.message);
     let divError = document.getElementById("formError");
     divError.innerHTML = `Error : ${e.response.data.message}`;
   }
-}
-export const updatePassword = async(data) => {
+};
+export const updatePassword = async (data) => {
   try {
     const res = await axios({
       method: "PATCH",
       url: "http://127.0.0.1:3000/api/users/updatePassword",
-      data
+      data,
     });
     if (res.data.status === "success") {
-      document.getElementById("formSuccess").innerHTML="Mot de passe modifié";
+      document.getElementById("formSuccess").innerHTML = "Mot de passe modifié";
     }
     console.log(res);
   } catch (e) {
-    console.log(e.response.data.message)
+    console.log(e.response.data.message);
     let divError = document.getElementById("formError");
     divError.innerHTML = `Error : ${e.response.data.message}`;
   }
-}
+};

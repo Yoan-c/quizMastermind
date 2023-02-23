@@ -44,14 +44,12 @@ exports.updateOneUser = catchAsync(async (req, res, next) => {
 });
 
 exports.updateUser = catchAsync(async (req, res, next) => {
-  const { email, pseudo} = req.body;
+  const { email, pseudo } = req.body;
 
- const user = await User.findById({_id : req.user.id});
-  if (email)
-    user.email = email;
-  if (pseudo)
-    user.pseudo = pseudo
-  await User.findByIdAndUpdate({_id : req.user.id}, user)
+  const user = await User.findById({ _id: req.user.id });
+  if (email) user.email = email;
+  if (pseudo) user.pseudo = pseudo;
+  await User.findByIdAndUpdate({ _id: req.user.id }, user);
   res.status(200).json({
     status: "success",
     user,
@@ -69,7 +67,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     );
   }
 
- const user = await User.findById({_id : req.user.id});
+  const user = await User.findById({ _id: req.user.id });
   user.password = password;
   user.confirmPassword = confirmPassword;
   await user.save();

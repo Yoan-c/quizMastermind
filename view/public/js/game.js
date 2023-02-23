@@ -12,11 +12,18 @@ export const startGame = async (category) => {
         url: res.data.data.url,
       });
       if (dataQuestion.data.success === "success") {
-       format(dataQuestion.data.data, dataQuestion.data.numQuestion + 1, res.data.data.nbQuestions, false);
+        format(
+          dataQuestion.data.data,
+          dataQuestion.data.numQuestion + 1,
+          res.data.data.nbQuestions,
+          false
+        );
       }
     }
   } catch (e) {
-    document.getElementById("game__error").innerHTML = `Error : ${e.response.data.message}`;
+    document.getElementById(
+      "game__error"
+    ).innerHTML = `Error : ${e.response.data.message}`;
   }
 };
 
@@ -25,13 +32,11 @@ const format = (quiz, numQuestion, nbQuestions, first) => {
   const divgGame = document.getElementById("game");
   const divBtn = document.getElementById("game__btn");
 
-  
   document.getElementById("game__error").innerHTML = "";
 
-  if (!first){
-  divgGame.removeChild(divBtn);
-  }
-  else {
+  if (!first) {
+    divgGame.removeChild(divBtn);
+  } else {
     divgGame.removeChild(document.getElementById("game__info"));
   }
   const divGameInfo = document.createElement("div");
@@ -80,19 +85,23 @@ const check = async (choices, el, id, category, numQuestion, nbQuestions) => {
       },
     });
     if (res.data.success === "success") {
-        showResponse(choices,el, res.data.data);
-       setTimeout(() => {
-          if (res.data.data.nextQuestion === "finish") {
-            showResult(res.data.data);
-          } else {
-            showNextQuestion(res.data.data.nextQuestion, numQuestion, nbQuestions);
-          }
-        }, 1500)
-
-     
+      showResponse(choices, el, res.data.data);
+      setTimeout(() => {
+        if (res.data.data.nextQuestion === "finish") {
+          showResult(res.data.data);
+        } else {
+          showNextQuestion(
+            res.data.data.nextQuestion,
+            numQuestion,
+            nbQuestions
+          );
+        }
+      }, 1500);
     }
   } catch (e) {
-    document.getElementById("game__error").innerHTML = `Error : ${e.response.data.message}`;
+    document.getElementById(
+      "game__error"
+    ).innerHTML = `Error : ${e.response.data.message}`;
   }
 };
 
@@ -102,12 +111,14 @@ const showResult = (data) => {
   divgGame.removeChild(gameInfo);
   let dataSuccess = "fail";
   const statSuccess = Math.round((data.score / data.nbQuestions) * 100);
-  const statFail = Math.round(((data.nbQuestions - data.score) / data.nbQuestions) * 100);
-  let result = "Raté"
+  const statFail = Math.round(
+    ((data.nbQuestions - data.score) / data.nbQuestions) * 100
+  );
+  let result = "Raté";
 
   if (data.score >= data.nbQuestions / 2) {
     dataSuccess = "success";
-    result = "Réussi"
+    result = "Réussi";
   }
   const divGameEnd = document.createElement("div");
   divGameEnd.classList.add("game__end");
@@ -127,30 +138,28 @@ const showResult = (data) => {
 };
 
 const showNextQuestion = async (url, numQuestion, nbQuestions) => {
-
   let res = await axios({
     method: "GET",
     url,
   });
   if (res.data.success === "success") {
-   format(res.data.data, numQuestion + 1,nbQuestions, true);
+    format(res.data.data, numQuestion + 1, nbQuestions, true);
   }
 };
 
-const showResponse = (choices,el, data) => {
+const showResponse = (choices, el, data) => {
   const correctAnswer = data.correct_answer;
   const userAnswerId = el.target.id.replace("choice", "radio");
-  const isCorrect = data.response
-  if(isCorrect){
-    document.getElementById(userAnswerId).classList.add('game__radio--success');
-  }
-  else {
-    document.getElementById(userAnswerId).classList.add('game__radio--fail');
-    choices.forEach(choice => {
-      if (choice.value === correctAnswer){
+  const isCorrect = data.response;
+  if (isCorrect) {
+    document.getElementById(userAnswerId).classList.add("game__radio--success");
+  } else {
+    document.getElementById(userAnswerId).classList.add("game__radio--fail");
+    choices.forEach((choice) => {
+      if (choice.value === correctAnswer) {
         const id = choice.id.replace("choice", "radio");
-        document.getElementById(id).classList.add('game__radio--success');
+        document.getElementById(id).classList.add("game__radio--success");
       }
-    })
-  }     
-}
+    });
+  }
+};

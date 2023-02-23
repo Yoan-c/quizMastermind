@@ -85,40 +85,37 @@ exports.startQuiz = (req, res, next) => {
   sendPage(req, res, { namePage, start: true, category });
 };
 
-exports.getUserQuiz = catchAsync(async(req, res, next) => {
-  console.log(req.user);
+exports.getUserQuiz = catchAsync(async (req, res, next) => {
   let tabQuiz = [];
 
   const quizInfo = await QuizInfo.find();
   const quizUser = req.user.quiz;
 
-  quizUser.forEach(el => {
-    if (el.isFinish){
+  quizUser.forEach((el) => {
+    if (el.isFinish) {
       const data = {
-        nbQuestions : el.nbQuestions,
-        score : el.score,
-        category : el.category,
-        image : ""
-      }
-      tabQuiz.push(data)
+        nbQuestions: el.nbQuestions,
+        score: el.score,
+        category: el.category,
+        image: "",
+      };
+      tabQuiz.push(data);
     }
   });
-  quizInfo.forEach(el => {
-    tabQuiz.forEach(data => {
-      if (el.category == data.category)
-        data.image = el.image
-    })
-  })
+  quizInfo.forEach((el) => {
+    tabQuiz.forEach((data) => {
+      if (el.category == data.category) data.image = el.image;
+    });
+  });
   let namePage = checkConnection(req, "quiz");
-  sendPage(req, res, { namePage , tabQuiz});
-})
+  sendPage(req, res, { namePage, tabQuiz });
+});
 
 exports.getUserProfil = (req, res, next) => {
   let namePage = checkConnection(req, "index");
   const user = {
-    pseudo : req.user.pseudo,
-    email : req.user.email
-  }
-  console.log(user);
-  sendPage(req, res, { namePage , askProfil : true, user});
-}
+    pseudo: req.user.pseudo,
+    email: req.user.email,
+  };
+  sendPage(req, res, { namePage, askProfil: true, user });
+};

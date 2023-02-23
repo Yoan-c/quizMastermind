@@ -1,33 +1,34 @@
 .menu {
     position: absolute;
     top: 20px;
-    right : 20px;
+    right: 20px;
     height: 3.2rem;
     width: 3.2rem;
     cursor: pointer;
 
     &__section {
         display: inline-block;
-        border-bottom : 3px solid $color-secondary;
+        border-bottom: 3px solid $color-secondary;
         border-radius: 6px;
         width: 3rem;
         position: relative;
-         cursor: pointer;
+        cursor: pointer;
 
         &::before {
             content: "";
             display: inline-block;
-            border-bottom : 3px solid $color-secondary;
+            border-bottom: 3px solid $color-secondary;
             border-radius: 6px;
             width: 3rem;
             position: absolute;
             top: -8px;
             cursor: pointer;
         }
+
         &::after {
             content: "";
             display: inline-block;
-            border-bottom : 3px solid $color-secondary;
+            border-bottom: 3px solid $color-secondary;
             border-radius: 6px;
             width: 3rem;
             position: absolute;
@@ -39,6 +40,7 @@
 
 #menu__section {
     display: none;
+
     @media only screen and (max-width: $bp-medium) {
         display: block;
     }
