@@ -12067,15 +12067,14 @@ var updateUser = /*#__PURE__*/function () {
           if (res.data.status === "success") {
             document.getElementById("formSuccess").innerHTML = "Mis à jour effectué";
           }
-          _context3.next = 12;
+          _context3.next = 11;
           break;
         case 7:
           _context3.prev = 7;
           _context3.t0 = _context3["catch"](0);
-          console.log(_context3.t0.response.data.message);
           divError = document.getElementById("formError");
           divError.innerHTML = "Error : ".concat(_context3.t0.response.data.message);
-        case 12:
+        case 11:
         case "end":
           return _context3.stop();
       }
@@ -12104,20 +12103,18 @@ var updatePassword = /*#__PURE__*/function () {
           if (res.data.status === "success") {
             document.getElementById("formSuccess").innerHTML = "Mot de passe modifié";
           }
-          console.log(res);
-          _context4.next = 13;
+          _context4.next = 11;
           break;
-        case 8:
-          _context4.prev = 8;
+        case 7:
+          _context4.prev = 7;
           _context4.t0 = _context4["catch"](0);
-          console.log(_context4.t0.response.data.message);
           divError = document.getElementById("formError");
           divError.innerHTML = "Error : ".concat(_context4.t0.response.data.message);
-        case 13:
+        case 11:
         case "end":
           return _context4.stop();
       }
-    }, _callee4, null, [[0, 8]]);
+    }, _callee4, null, [[0, 7]]);
   }));
   return function updatePassword(_x8) {
     return _ref4.apply(this, arguments);

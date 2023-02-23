@@ -58,7 +58,6 @@ export const updateUser = async (data) => {
       document.getElementById("formSuccess").innerHTML = "Mis à jour effectué";
     }
   } catch (e) {
-    console.log(e.response.data.message);
     let divError = document.getElementById("formError");
     divError.innerHTML = `Error : ${e.response.data.message}`;
   }
@@ -73,9 +72,7 @@ export const updatePassword = async (data) => {
     if (res.data.status === "success") {
       document.getElementById("formSuccess").innerHTML = "Mot de passe modifié";
     }
-    console.log(res);
   } catch (e) {
-    console.log(e.response.data.message);
     let divError = document.getElementById("formError");
     divError.innerHTML = `Error : ${e.response.data.message}`;
   }

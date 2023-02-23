@@ -47,7 +47,14 @@ exports.updateUser = catchAsync(async (req, res, next) => {
   const { email, pseudo } = req.body;
 
   const user = await User.findById({ _id: req.user.id });
-  if (email) user.email = email;
+  const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (email) {
+    if (email.match(regex)) user.email = email;
+    else
+      return next(
+        new AppError("Veuillez renseigner une adresse email valide", 400)
+      );
+  }
   if (pseudo) user.pseudo = pseudo;
   await User.findByIdAndUpdate({ _id: req.user.id }, user);
   res.status(200).json({
