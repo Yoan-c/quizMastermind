@@ -7,8 +7,8 @@
     "start": "SET NODE_ENV=development&& nodemon server.js",
     "start:prod": "nodemon server.js",
     "sass": "sass view/public/sass/index.scss view/public/css/style.css -w",
-    "watch:js": "parcel watch ./view/public/js/index.js --out-dir ./view/public/js --out-file bundle.js",
-    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
+    "watch:js": "parcel watch ./view/public/js/index.js --out-dir ./view/public/js --out-file bundle.js --public-url /js",
+    "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js --public-url /js"
   },
   "repository": {
     "type": "git",
@@ -36,12 +36,14 @@
     "jsonwebtoken": "^9.0.0",
     "login.js": "^1.2.0",
     "mongoose": "^6.9.1",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.5.0",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
   },
   "engines": {
-    "node": ">18"
+    "node": ">17"
   }
 }

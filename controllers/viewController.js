@@ -1,3 +1,4 @@
+const path = require("path");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 const QuizInfo = require("../models/quizInfoModel");
@@ -22,7 +23,7 @@ const sendPage = (req, res, ...obj) => {
   isLoggued = loggued(req);
   data.isLoggued = isLoggued;
   data.quizInfo = req.quiz;
-  res.render(`${__dirname}/../view/pages/${namePage}`, {
+  res.render(path.join(__dirname, `/../view/pages/${namePage}`), {
     title: "Quiz Mastermind",
     data,
   });

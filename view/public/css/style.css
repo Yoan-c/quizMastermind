@@ -456,6 +456,12 @@ a {
   cursor: pointer;
 }
 
+.notFound {
+  color: #930202;
+  font-size: 2rem;
+  text-align: center;
+}
+
 footer {
   grid-area: footer;
   text-align: center;
