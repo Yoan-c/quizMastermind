@@ -3,6 +3,7 @@ import { login, updateUser, updatePassword, signup } from "./login";
 import { startGame } from "./game";
 import { showMenu } from "./menu";
 
+const PATH = "http://127.0.0.1:3000";
 let gameStart = document.getElementById("gameStart");
 let btnConnection = document.getElementById("btnConnection");
 let btnInscription = document.getElementById("btnInscription");
@@ -16,7 +17,7 @@ if (btnConnection) {
     e.preventDefault();
     let idConnect = document.getElementById("idConnect").value;
     let password = document.getElementById("password").value;
-    login(idConnect, password);
+    login(PATH, idConnect, password);
   });
 }
 if (btnInscription) {
@@ -27,7 +28,7 @@ if (btnInscription) {
     let pseudo = document.getElementById("pseudo").value;
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
-    signup(pseudo, email, password, confirmPassword);
+    signup(PATH, pseudo, email, password, confirmPassword);
   });
 }
 
@@ -43,7 +44,7 @@ if (btnUpdate) {
       email,
       pseudo,
     };
-    updateUser(data);
+    updateUser(PATH, data);
   });
 }
 if (btnUpdatePassword) {
@@ -65,7 +66,7 @@ if (btnUpdatePassword) {
         password,
         confirmPassword,
       };
-      updatePassword(data);
+      updatePassword(PATH, data);
     }
   });
 }
@@ -78,6 +79,6 @@ if (gameStart) {
 }
 if (menuSection) {
   menuSection.addEventListener("click", () => {
-    showMenu();
+    showMenu(PATH);
   });
 }

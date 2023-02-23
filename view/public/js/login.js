@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const login = async (id, password) => {
+export const login = async (PATH, id, password) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:3000/api/users/login",
+      url: `${PATH}/api/users/login`,
       data: {
         email: id,
         pseudo: id,
@@ -21,11 +21,17 @@ export const login = async (id, password) => {
     divError.innerHTML = `Error : ${e.response.data.message}`;
   }
 };
-export const signup = async (pseudo, email, password, confirmPassword) => {
+export const signup = async (
+  PATH,
+  pseudo,
+  email,
+  password,
+  confirmPassword
+) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:3000/api/users/signup",
+      url: `${PATH}/api/users/signup`,
       data: {
         email,
         pseudo,
@@ -47,11 +53,11 @@ export const signup = async (pseudo, email, password, confirmPassword) => {
   }
 };
 
-export const updateUser = async (data) => {
+export const updateUser = async (PATH, data) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url: "http://127.0.0.1:3000/api/users/update",
+      url: `${PATH}/api/users/update`,
       data,
     });
     if (res.data.status === "success") {
@@ -62,11 +68,11 @@ export const updateUser = async (data) => {
     divError.innerHTML = `Error : ${e.response.data.message}`;
   }
 };
-export const updatePassword = async (data) => {
+export const updatePassword = async (PATH, data) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url: "http://127.0.0.1:3000/api/users/updatePassword",
+      url: `${PATH}/api/users/updatePassword`,
       data,
     });
     if (res.data.status === "success") {

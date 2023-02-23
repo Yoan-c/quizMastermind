@@ -1,10 +1,11 @@
 import axios from "axios";
+const PATH = "http://127.0.0.1:3000";
 
 export const startGame = async (category) => {
   try {
     const res = await axios({
       method: "GET",
-      url: `http://127.0.0.1:3000/api/quiz/${category}/start`,
+      url: `${PATH}/api/quiz/${category}/start`,
     });
     if (res.data.success === "success") {
       let dataQuestion = await axios({
@@ -79,7 +80,7 @@ const check = async (choices, el, id, category, numQuestion, nbQuestions) => {
   try {
     const res = await axios({
       method: "POST",
-      url: `http://127.0.0.1:3000/api/quiz/${category}/${id}`,
+      url: `${PATH}/api/quiz/${category}/${id}`,
       data: {
         answer,
       },
